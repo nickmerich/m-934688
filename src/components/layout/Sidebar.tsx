@@ -20,7 +20,7 @@ interface SidebarProps {
 }
 
 const menuItems = [
-  { icon: BarChart3, label: 'Dashboard', path: '/' },
+  { icon: BarChart3, label: 'Dashboard', path: '/dashboard' },
   { icon: Calendar, label: 'Habits', path: '/habits' },
   { icon: Target, label: 'Goals', path: '/goals' },
   { icon: Trophy, label: 'Analytics', path: '/analytics' },
