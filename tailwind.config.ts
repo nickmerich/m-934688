@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,7 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter var', 'sans-serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -86,20 +85,12 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				},
 				'fade-in': {
 					'0%': { opacity: '0' },
@@ -117,13 +108,33 @@ export default {
 					'0%': { transform: 'translateY(-10px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' }
 				},
+				'slide-up-fade': {
+					'0%': { transform: 'translateY(30px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
 				'pulse-gentle': {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.8' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-5px)' }
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200px 0' },
+					'100%': { backgroundPosition: 'calc(200px + 100%) 0' }
+				},
+				'glow': {
+					'0%, 100%': { 
+						textShadow: '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor' 
+					},
+					'50%': { 
+						textShadow: '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor' 
+					}
 				}
 			},
 			animation: {
@@ -133,8 +144,12 @@ export default {
 				'fade-out': 'fade-out 0.3s ease-out',
 				'slide-up': 'slide-up 0.4s ease-out',
 				'slide-down': 'slide-down 0.4s ease-out',
+				'slide-up-fade': 'slide-up-fade 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+				'scale-in': 'scale-in 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
 				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 6s ease-in-out infinite',
+				'shimmer': 'shimmer 2s infinite',
+				'glow': 'glow 2s ease-in-out infinite alternate'
 			},
 			backdropFilter: {
 				'none': 'none',
@@ -144,7 +159,9 @@ export default {
 				'card': '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
 				'card-hover': '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
 				'neomorphic': '10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff',
-				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.1)'
+				'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+				'glow': '0 0 20px rgba(74, 222, 128, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+				'glow-orange': '0 0 20px rgba(251, 146, 60, 0.3), 0 4px 6px -1px rgba(0, 0, 0, 0.1)'
 			}
 		}
 	},

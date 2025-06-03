@@ -22,20 +22,22 @@ export function LevelProgress({ currentLevel, currentWins, nextLevelWins }: Leve
   };
 
   return (
-    <Card className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border-green-500/30">
+    <Card className="bg-gradient-to-br from-green-500/20 via-blue-500/20 to-purple-500/20 border-green-500/30 shadow-glow animate-scale-in">
       <CardContent className="p-4">
-        <div className="flex items-center space-x-3 mb-2">
-          <Trophy className="h-6 w-6 text-green-500" />
+        <div className="flex items-center space-x-3 mb-3">
+          <Trophy className="h-6 w-6 text-green-500 animate-glow floating" />
           <div>
-            <div className="text-sm font-medium text-white">Level {currentLevel}</div>
-            <div className="text-xs text-gray-400">{getLevelTitle(currentLevel)}</div>
+            <div className="text-sm font-medium text-white/90 flex items-center space-x-2">
+              <span>Level {currentLevel}</span>
+              <span className="level-badge text-xs">{getLevelTitle(currentLevel)}</span>
+            </div>
           </div>
         </div>
-        <div className="space-y-2">
-          <Progress value={progressPercentage} className="h-2" />
+        <div className="space-y-3">
+          <Progress value={progressPercentage} className="h-3" />
           <div className="flex justify-between text-xs text-gray-400">
-            <span>{currentWins} Wins</span>
-            <span>{nextLevelWins} Wins</span>
+            <span className="xp-glow">{currentWins} Wins</span>
+            <span className="text-white/70">{nextLevelWins} Wins</span>
           </div>
         </div>
       </CardContent>
