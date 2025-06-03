@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Plus, Filter, Sort } from 'lucide-react';
+import { Plus, Filter, ArrowUpDown } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -80,11 +80,7 @@ export function MobileHabitTracker({ className }: MobileHabitTrackerProps) {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between mb-3">
           <CardTitle className="text-lg text-white">Today's Habits</CardTitle>
-          <AddHabitModal onAddHabit={addNewHabit}>
-            <Button size="sm" className="bg-green-500 hover:bg-green-600 h-8 px-3">
-              <Plus className="h-4 w-4" />
-            </Button>
-          </AddHabitModal>
+          <AddHabitModal onAddHabit={addNewHabit} />
         </div>
         
         {/* Progress */}
