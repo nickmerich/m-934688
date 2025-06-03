@@ -106,7 +106,7 @@ const Home = () => {
             
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight px-4 sm:px-0">
               <span className="text-green-500 glow-text">Reach Your Potential</span>
-              <span className="block text-white">Through Consistent Daily Habits</span>
+              <span className="block text-white">One Day At A Time</span>
             </h1>
             
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
