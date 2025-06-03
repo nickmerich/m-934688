@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';
-import { Check, Plus, Clock, Flame } from 'lucide-react';
+import { Check, Clock, Flame } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
+import { AddHabitModal } from './AddHabitModal';
 
 interface Habit {
   id: string;
@@ -13,15 +14,16 @@ interface Habit {
   completed: boolean;
   category: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
-  xpReward: number;
+  winsReward: number;
+  description?: string;
 }
 
 const mockHabits: Habit[] = [
-  { id: '1', name: 'Morning Meditation', streak: 7, completed: true, category: 'Mindfulness', difficulty: 'Easy', xpReward: 10 },
-  { id: '2', name: 'Workout Session', streak: 5, completed: false, category: 'Fitness', difficulty: 'Hard', xpReward: 30 },
-  { id: '3', name: 'Read 30 Minutes', streak: 12, completed: true, category: 'Learning', difficulty: 'Medium', xpReward: 20 },
-  { id: '4', name: 'Drink 8 Glasses of Water', streak: 3, completed: false, category: 'Health', difficulty: 'Easy', xpReward: 15 },
-  { id: '5', name: 'Journal Writing', streak: 9, completed: true, category: 'Reflection', difficulty: 'Medium', xpReward: 25 },
+  { id: '1', name: 'Morning Meditation', streak: 7, completed: true, category: 'Mindfulness', difficulty: 'Easy', winsReward: 10 },
+  { id: '2', name: 'Workout Session', streak: 5, completed: false, category: 'Fitness', difficulty: 'Hard', winsReward: 30 },
+  { id: '3', name: 'Read 30 Minutes', streak: 12, completed: true, category: 'Learning', difficulty: 'Medium', winsReward: 20 },
+  { id: '4', name: 'Drink 8 Glasses of Water', streak: 3, completed: false, category: 'Health', difficulty: 'Easy', winsReward: 15 },
+  { id: '5', name: 'Journal Writing', streak: 9, completed: true, category: 'Reflection', difficulty: 'Medium', winsReward: 25 },
 ];
 
 export function HabitTracker() {
@@ -33,6 +35,29 @@ export function HabitTracker() {
         ? { ...habit, completed: !habit.completed }
         : habit
     ));
+  };
+
+  const addNewHabit = (newHabitData: {
+    name: string;
+    category: string;
+    difficulty: 'Easy' | 'Medium' | 'Hard';
+    description?: string;
+  }) => {
+    const winsReward = newHabitData.difficulty === 'Easy' ? 10 : 
+                      newHabitData.difficulty === 'Medium' ? 20 : 30;
+
+    const newHabit: Habit = {
+      id: Date.now().toString(),
+      name: newHabitData.name,
+      streak: 0,
+      completed: false,
+      category: newHabitData.category,
+      difficulty: newHabitData.difficulty,
+      winsReward,
+      description: newHabitData.description
+    };
+
+    setHabits([...habits, newHabit]);
   };
 
   const completedToday = habits.filter(h => h.completed).length;
@@ -53,10 +78,7 @@ export function HabitTracker() {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-white">Today's Habits</CardTitle>
-          <Button size="sm" className="bg-green-500 hover:bg-green-600 text-white">
-            <Plus className="h-4 w-4 mr-2" />
-            Add Habit
-          </Button>
+          <AddHabitModal onAddHabit={addNewHabit} />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between text-sm">
@@ -108,7 +130,7 @@ export function HabitTracker() {
                   {habit.category}
                 </div>
                 <div className="text-green-400 font-medium">
-                  +{habit.xpReward} XP
+                  +{habit.winsReward} Wins
                 </div>
               </div>
             </div>
