@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -107,7 +106,7 @@ const Home = () => {
             
             <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
               <span className="text-green-500 glow-text">Reach Your Potential</span>
-              <span className="block text-white">Through Relentless Grit</span>
+              <span className="block text-white">Through Consistent Daily Habits</span>
             </h1>
             
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
