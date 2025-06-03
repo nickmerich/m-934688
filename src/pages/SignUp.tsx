@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -25,6 +26,10 @@ const SignUp = () => {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const handleTermsChange = (checked: boolean | "indeterminate") => {
+    setAgreeToTerms(checked === true);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -171,7 +176,7 @@ const SignUp = () => {
                 <Checkbox
                   id="terms"
                   checked={agreeToTerms}
-                  onCheckedChange={setAgreeToTerms}
+                  onCheckedChange={handleTermsChange}
                   className="border-gray-600 data-[state=checked]:bg-green-500 data-[state=checked]:border-green-500"
                 />
                 <label htmlFor="terms" className="text-sm text-gray-400">
