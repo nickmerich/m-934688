@@ -31,7 +31,7 @@ export function MobileHabitCard({ habit, onToggle }: MobileHabitCardProps) {
   };
 
   return (
-    <Card className={`transition-all duration-300 animate-slide-up-fade ${
+    <Card className={`transition-all duration-300 animate-slide-up-fade active:scale-95 ${
       habit.completed 
         ? 'bg-gradient-to-r from-green-500/10 to-green-600/10 border-green-500/30 shadow-glow' 
         : 'glass-card hover:border-gray-600/50'
@@ -42,18 +42,18 @@ export function MobileHabitCard({ habit, onToggle }: MobileHabitCardProps) {
             variant="ghost"
             size="icon"
             onClick={() => onToggle(habit.id)}
-            className={`mt-1 rounded-full flex-shrink-0 transition-all duration-300 ${
+            className={`mt-1 rounded-full flex-shrink-0 transition-all duration-300 h-10 w-10 touch-manipulation ${
               habit.completed 
                 ? 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-glow animate-scale-in' 
                 : 'border-2 border-gray-600 hover:border-green-500 hover:bg-green-500/10'
             }`}
           >
-            {habit.completed && <Check className="h-4 w-4" />}
+            {habit.completed && <Check className="h-5 w-5" />}
           </Button>
 
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between mb-2">
-              <h3 className={`font-medium text-sm leading-5 transition-colors duration-300 ${
+              <h3 className={`font-medium text-base leading-5 transition-colors duration-300 ${
                 habit.completed ? 'text-green-400 animate-glow' : 'text-white'
               }`}>
                 {habit.name}
@@ -66,14 +66,14 @@ export function MobileHabitCard({ habit, onToggle }: MobileHabitCardProps) {
               </Badge>
             </div>
             
-            <div className="flex items-center justify-between text-xs text-gray-400">
-              <div className="flex items-center space-x-3">
+            <div className="flex items-center justify-between text-sm text-gray-400">
+              <div className="flex items-center space-x-4">
                 <div className="flex items-center group">
-                  <Flame className="h-3 w-3 mr-1 text-orange-500 group-hover:animate-glow transition-all duration-300" />
-                  <span className="streak-glow">{habit.streak}</span>
+                  <Flame className="h-4 w-4 mr-1 text-orange-500 group-hover:animate-glow transition-all duration-300" />
+                  <span className="streak-glow font-medium">{habit.streak}</span>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="h-3 w-3 mr-1" />
+                  <Clock className="h-4 w-4 mr-1" />
                   {habit.category}
                 </div>
               </div>
