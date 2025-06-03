@@ -7,7 +7,7 @@ import {
   Calendar, 
   Users, 
   Trophy, 
-  User,
+  Puzzle,
   ChevronLeft,
   ChevronRight 
 } from 'lucide-react';
@@ -25,7 +25,7 @@ const menuItems = [
   { icon: Target, label: 'Goals', path: '/goals' },
   { icon: Trophy, label: 'Analytics', path: '/analytics' },
   { icon: Users, label: 'Community', path: '/community' },
-  { icon: User, label: 'Profile', path: '/profile' },
+  { icon: Puzzle, label: 'Integrations', path: '/integrations' },
 ];
 
 export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {

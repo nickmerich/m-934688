@@ -11,7 +11,7 @@ import Habits from "./pages/Habits";
 import Goals from "./pages/Goals";
 import Analytics from "./pages/Analytics";
 import Community from "./pages/Community";
-import Profile from "./pages/Profile";
+import Integrations from "./pages/Integrations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,7 +30,7 @@ const App = () => (
             <Route path="/goals" element={<Goals />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/community" element={<Community />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/integrations" element={<Integrations />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
