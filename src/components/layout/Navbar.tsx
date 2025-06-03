@@ -10,9 +10,11 @@ export function Navbar() {
       <div className="flex h-16 items-center justify-between px-4 lg:px-6">
         {/* Logo */}
         <div className="flex items-center space-x-4">
-          <div className="text-2xl font-bold text-white">
-            <span className="text-green-500">G</span>ryt
-          </div>
+          <img 
+            src="/lovable-uploads/62433d31-9986-454a-9285-9bda4b300e80.png" 
+            alt="The Gryt" 
+            className="h-10 w-10 object-contain"
+          />
         </div>
 
         {/* Search */}
