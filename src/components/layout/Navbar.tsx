@@ -1,49 +1,52 @@
 
 import React from 'react';
-import { Search, Bell, User } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Input } from '@/components/ui/input';
+import { Bell, Search, Settings, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 
-interface NavbarProps {
-  className?: string;
-}
-
-export function Navbar({ className }: NavbarProps) {
+export function Navbar() {
   return (
-    <header className={cn("bg-background/95 backdrop-blur-sm sticky top-0 z-30 border-b", className)}>
-      <div className="container flex items-center justify-between h-16 px-4">
-        <div className="flex items-center gap-2 lg:gap-4">
-          <h1 className="text-lg font-semibold tracking-tight lg:text-xl">MarketPulse</h1>
-          
-          <div className="relative hidden md:flex items-center h-9 rounded-md px-3 text-muted-foreground focus-within:text-foreground bg-muted/50">
-            <Search className="h-4 w-4 mr-2" />
-            <Input 
-              type="search" 
-              placeholder="Search stocks, indices..." 
-              className="h-9 w-[200px] lg:w-[280px] bg-transparent border-none px-0 py-0 shadow-none focus-visible:ring-0 placeholder:text-muted-foreground"
+    <nav className="border-b border-gray-800 bg-gray-950/80 backdrop-blur-sm">
+      <div className="flex h-16 items-center justify-between px-4 lg:px-6">
+        {/* Logo */}
+        <div className="flex items-center space-x-4">
+          <div className="text-2xl font-bold text-white">
+            <span className="text-green-500">G</span>ryt
+          </div>
+        </div>
+
+        {/* Search */}
+        <div className="hidden md:flex flex-1 max-w-md mx-4">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <input
+              type="text"
+              placeholder="Search habits, goals..."
+              className="w-full bg-gray-800 border border-gray-700 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
         </div>
-        
-        <div className="flex items-center gap-4">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="relative h-9 w-9"
-          >
-            <Bell className="h-5 w-5" />
-            <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-primary animate-pulse" />
+
+        {/* Right Actions */}
+        <div className="flex items-center space-x-3">
+          <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
+            <div className="relative">
+              <Bell className="h-5 w-5" />
+              <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-orange-500 text-xs flex items-center justify-center p-0">
+                3
+              </Badge>
+            </div>
           </Button>
           
-          <Avatar className="h-9 w-9 transition-transform duration-200 hover:scale-105">
-            <AvatarFallback className="bg-primary/10 text-primary">
-              <User className="h-5 w-5" />
-            </AvatarFallback>
-          </Avatar>
+          <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
+            <Settings className="h-5 w-5" />
+          </Button>
+          
+          <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
+            <User className="h-5 w-5" />
+          </Button>
         </div>
       </div>
-    </header>
+    </nav>
   );
 }
