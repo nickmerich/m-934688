@@ -31,7 +31,7 @@ export function StatsOverview() {
         className="bg-gray-900 border-gray-800"
       />
       <StatsCard
-        title="Total XP"
+        title="Total Wins"
         value="2,450"
         description="lifetime points"
         icon={<Trophy />}

@@ -34,7 +34,7 @@ const Dashboard = () => {
               </div>
               <div className="flex items-center space-x-4">
                 <StreakCounter currentStreak={7} />
-                <LevelProgress currentLevel={3} currentXP={750} nextLevelXP={1000} />
+                <LevelProgress currentLevel={3} currentWins={750} nextLevelWins={1000} />
               </div>
             </div>
 

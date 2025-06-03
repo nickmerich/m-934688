@@ -6,12 +6,12 @@ import { Progress } from '@/components/ui/progress';
 
 interface LevelProgressProps {
   currentLevel: number;
-  currentXP: number;
-  nextLevelXP: number;
+  currentWins: number;
+  nextLevelWins: number;
 }
 
-export function LevelProgress({ currentLevel, currentXP, nextLevelXP }: LevelProgressProps) {
-  const progressPercentage = (currentXP / nextLevelXP) * 100;
+export function LevelProgress({ currentLevel, currentWins, nextLevelWins }: LevelProgressProps) {
+  const progressPercentage = (currentWins / nextLevelWins) * 100;
 
   const getLevelTitle = (level: number) => {
     if (level < 5) return 'Novice';
@@ -34,8 +34,8 @@ export function LevelProgress({ currentLevel, currentXP, nextLevelXP }: LevelPro
         <div className="space-y-2">
           <Progress value={progressPercentage} className="h-2" />
           <div className="flex justify-between text-xs text-gray-400">
-            <span>{currentXP} XP</span>
-            <span>{nextLevelXP} XP</span>
+            <span>{currentWins} Wins</span>
+            <span>{nextLevelWins} Wins</span>
           </div>
         </div>
       </CardContent>
