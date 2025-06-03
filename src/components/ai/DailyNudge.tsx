@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { Sparkles, RefreshCw } from 'lucide-react';
+import { Sparkles, RefreshCw, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const dailyNudges = [
   {
@@ -23,6 +24,7 @@ const dailyNudges = [
 ];
 
 export function DailyNudge() {
+  const navigate = useNavigate();
   const [currentNudge, setCurrentNudge] = React.useState(0);
 
   const refreshNudge = () => {
@@ -68,10 +70,22 @@ export function DailyNudge() {
           <p className="text-sm text-white font-medium">{nudge.action}</p>
         </div>
 
-        <div className="flex items-center justify-between text-xs text-gray-500">
-          <span>Powered by Gryt AI</span>
-          <span className="capitalize">{nudge.type}</span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between text-xs text-gray-500 flex-1">
+            <span>Powered by Gryt AI</span>
+            <span className="capitalize">{nudge.type}</span>
+          </div>
         </div>
+
+        <Button
+          onClick={() => navigate('/ai-habit-partner')}
+          className="w-full bg-green-500 hover:bg-green-600 text-white mt-4"
+          size="sm"
+        >
+          <Sparkles className="h-4 w-4 mr-2" />
+          Upgrade to AI Habit Partner
+          <ArrowRight className="h-4 w-4 ml-2" />
+        </Button>
       </CardContent>
     </Card>
   );

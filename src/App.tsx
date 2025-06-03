@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +16,7 @@ import Goals from "./pages/Goals";
 import Analytics from "./pages/Analytics";
 import Community from "./pages/Community";
 import Integrations from "./pages/Integrations";
+import AIHabitPartner from "./pages/AIHabitPartner";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +39,7 @@ const App = () => (
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/community" element={<Community />} />
             <Route path="/integrations" element={<Integrations />} />
+            <Route path="/ai-habit-partner" element={<AIHabitPartner />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
