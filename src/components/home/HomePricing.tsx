@@ -36,21 +36,6 @@ export function HomePricing() {
       cta: "BECOME WARRIOR",
       color: "neo-card-green",
       popular: true
-    },
-    {
-      name: "GRYT LEGEND",
-      price: "$19",
-      period: "PER MONTH", 
-      features: [
-        "EVERYTHING IN WARRIOR",
-        "1-ON-1 COACHING CALLS",
-        "CUSTOM FRAMEWORKS",
-        "EARLY ACCESS FEATURES",
-        "EXCLUSIVE COMMUNITY"
-      ],
-      cta: "BECOME LEGEND",
-      color: "neo-card-pink",
-      popular: false
     }
   ];
 
