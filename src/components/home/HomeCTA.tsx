@@ -9,13 +9,13 @@ export function HomeCTA() {
   return (
     <section className="bg-white py-20">
       <div className="max-w-4xl mx-auto px-4 lg:px-6 text-center">
-        <h2 className="neo-text-huge text-white mb-8">
+        <h2 className="neo-text-huge text-black mb-8">
           YOUR TRANSFORMATION STARTS
           <span className="block" style={{ color: 'hsl(var(--neon-green))' }}>
             TODAY
           </span>
         </h2>
-        <p className="neo-text-medium text-white mb-12 leading-relaxed">
+        <p className="neo-text-medium text-black mb-12 leading-relaxed">
           BE AMONG THE FIRST TO EXPERIENCE A REVOLUTIONARY APPROACH TO BUILDING UNBREAKABLE HABITS AND ACHIEVING YOUR MOST AMBITIOUS GOALS.
         </p>
         <Button 

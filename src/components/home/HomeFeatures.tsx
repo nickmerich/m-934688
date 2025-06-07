@@ -34,13 +34,13 @@ export function HomeFeatures() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="neo-text-huge text-white mb-8">
+          <h2 className="neo-text-huge text-black mb-8">
             EVERYTHING YOU NEED TO BUILD
             <span className="block" style={{ color: 'hsl(var(--neon-green))' }}>
               UNSTOPPABLE MOMENTUM
             </span>
           </h2>
-          <p className="neo-text-medium text-white max-w-3xl mx-auto">
+          <p className="neo-text-medium text-black max-w-3xl mx-auto">
             OUR COMPREHENSIVE SYSTEM ADDRESSES EVERY ASPECT OF PERSONAL TRANSFORMATION
           </p>
         </div>

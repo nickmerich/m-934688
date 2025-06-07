@@ -43,7 +43,7 @@ export function HomePricing() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="neo-text-huge text-white mb-8">
+          <h2 className="neo-text-huge text-black mb-8">
             CHOOSE YOUR
             <span className="block" style={{ color: 'hsl(var(--neon-green))' }}>
               TRANSFORMATION LEVEL
@@ -57,7 +57,7 @@ export function HomePricing() {
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="neo-card-charcoal px-4 py-2">
-                    <span className="neo-text-medium text-white">MOST POPULAR</span>
+                    <span className="neo-text-medium text-black">MOST POPULAR</span>
                   </div>
                 </div>
               )}

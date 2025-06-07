@@ -24,7 +24,7 @@ export function HomeTestimonials() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="neo-text-huge text-white mb-8">
+          <h2 className="neo-text-huge text-black mb-8">
             WHAT EARLY USERS SAY
           </h2>
         </div>
@@ -33,7 +33,7 @@ export function HomeTestimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="neo-card">
               <div className="text-center">
-                <blockquote className="neo-text-medium text-white mb-6 leading-relaxed">
+                <blockquote className="neo-text-medium text-black mb-6 leading-relaxed">
                   "{testimonial.quote}"
                 </blockquote>
                 <div className="neo-card-charcoal inline-block">
