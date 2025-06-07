@@ -1,21 +1,64 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 export function HomeFooter() {
+  const navigate = useNavigate();
+
   return (
-    <footer className="border-t border-gray-800 bg-gray-950 py-8 sm:py-12">
+    <footer className="bg-black border-t-4 border-white py-16">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Logo Section */}
+          <div className="text-center md:text-left">
             <img 
-              src="/lovable-uploads/62433d31-9986-454a-9285-9bda4b300e80.png" 
+              src="/lovable-uploads/36057026-7f82-4caf-a7df-9d724c8be803.png" 
               alt="The Gryt" 
-              className="h-6 w-6 sm:h-8 sm:w-8 object-contain"
+              className="h-16 w-auto object-contain mx-auto md:mx-0 mb-4"
             />
-            <span className="text-lg sm:text-xl font-bold text-white">The <span className="text-green-500">Gryt</span></span>
+            <p className="neo-text-medium text-white">
+              BUILDING UNBREAKABLE HABITS, ONE DAY AT A TIME.
+            </p>
           </div>
-          <div className="text-gray-400 text-xs sm:text-sm text-center">
-            © 2024 The Gryt. Building unbreakable habits, one day at a time.
+
+          {/* Navigation */}
+          <div className="text-center">
+            <h3 className="neo-text-big text-white mb-6">NAVIGATE</h3>
+            <nav className="space-y-3">
+              <div><span className="neo-text-medium text-white cursor-pointer hover:text-green-500">HOME</span></div>
+              <div><span className="neo-text-medium text-white cursor-pointer hover:text-green-500">FEATURES</span></div>
+              <div><span className="neo-text-medium text-white cursor-pointer hover:text-green-500">PRICING</span></div>
+              <div><span className="neo-text-medium text-white cursor-pointer hover:text-green-500">CONTACT</span></div>
+            </nav>
+          </div>
+
+          {/* Sign Up Form */}
+          <div className="text-center md:text-right">
+            <h3 className="neo-text-big text-white mb-6">GET STARTED</h3>
+            <div className="space-y-4">
+              <Button 
+                onClick={() => navigate('/signup')}
+                className="neo-button-primary w-full"
+              >
+                SIGN UP NOW
+              </Button>
+              <Button 
+                onClick={() => navigate('/signin')}
+                className="neo-button-accent w-full"
+              >
+                SIGN IN
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t-4 border-white pt-8">
+          <div className="text-center">
+            <p className="neo-text-medium text-white">
+              © 2024 THE GRYT. ALL RIGHTS RESERVED.
+            </p>
           </div>
         </div>
       </div>
