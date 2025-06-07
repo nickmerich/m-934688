@@ -14,7 +14,7 @@ export function HomeHero() {
             <span className="neo-text-medium text-black">🚀 LAUNCH YOUR TRANSFORMATION</span>
           </div>
           
-          <h1 className="neo-text-massive text-white max-w-5xl mx-auto">
+          <h1 className="neo-text-massive text-black max-w-5xl mx-auto">
             REACH YOUR POTENTIAL
             <span className="block" style={{ color: 'hsl(var(--neon-green))' }}>
               ONE DAY AT A TIME
@@ -22,7 +22,7 @@ export function HomeHero() {
           </h1>
           
           <div className="max-w-4xl mx-auto">
-            <p className="neo-text-medium text-white leading-relaxed">
+            <p className="neo-text-medium text-black leading-relaxed">
               THE GRYT ISN'T JUST ANOTHER HABIT TRACKER. IT'S A COMPLETE TRANSFORMATION SYSTEM THAT BUILDS UNSHAKEABLE DISCIPLINE AND TURNS DREAMS INTO SYSTEMATIC PROGRESS.
             </p>
           </div>
