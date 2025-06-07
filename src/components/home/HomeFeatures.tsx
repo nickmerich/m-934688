@@ -8,25 +8,29 @@ export function HomeFeatures() {
       icon: Target,
       title: "GOAL MASTERY",
       description: "TRANSFORM ASPIRATIONS INTO SYSTEMATIC ACHIEVEMENTS THROUGH PROVEN FRAMEWORKS.",
-      color: "neo-card-green"
+      color: "neo-card-green",
+      textColor: "text-black"
     },
     {
       icon: Zap,
       title: "HABIT ENGINEERING",
       description: "BUILD UNBREAKABLE HABITS THAT COMPOUND DAILY AND CREATE LASTING CHANGE.",
-      color: "neo-card-pink"
+      color: "neo-card-pink",
+      textColor: "text-black"
     },
     {
       icon: Trophy,
       title: "PROGRESS TRACKING",
       description: "VISUALIZE YOUR JOURNEY WITH DETAILED ANALYTICS AND CELEBRATE MILESTONES.",
-      color: "neo-card"
+      color: "neo-card",
+      textColor: "text-black"
     },
     {
       icon: Users,
       title: "FUTURE COMMUNITY",
       description: "SOON YOU'LL CONNECT WITH LIKE-MINDED INDIVIDUALS COMMITTED TO EXCELLENCE.",
-      color: "neo-card-charcoal"
+      color: "neo-card-charcoal",
+      textColor: "text-white"
     }
   ];
 
@@ -52,8 +56,8 @@ export function HomeFeatures() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
                   <feature.icon className="h-8 w-8 text-white" strokeWidth={3} />
                 </div>
-                <h3 className="neo-text-big text-black mb-4">{feature.title}</h3>
-                <p className="neo-text-medium text-black leading-relaxed">{feature.description}</p>
+                <h3 className={`neo-text-big ${feature.textColor} mb-4`}>{feature.title}</h3>
+                <p className={`neo-text-medium ${feature.textColor} leading-relaxed`}>{feature.description}</p>
               </div>
             </div>
           ))}
