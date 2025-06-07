@@ -31,7 +31,7 @@ export function HomeFeatures() {
   ];
 
   return (
-    <section className="bg-black py-20">
+    <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="text-center mb-16">
           <h2 className="neo-text-huge text-white mb-8">

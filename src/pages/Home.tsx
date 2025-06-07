@@ -10,7 +10,7 @@ import { HomeFooter } from '@/components/home/HomeFooter';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-black no-gradients">
+    <div className="min-h-screen bg-white no-gradients">
       <HomeNavigation />
       <HomeHero />
       <HomeFeatures />
