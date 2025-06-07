@@ -54,14 +54,6 @@ export function HomePricing() {
         <div className="neo-grid max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <div key={index} className={`${plan.color} relative`}>
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="neo-card-charcoal px-4 py-2">
-                    <span className="neo-text-medium text-black">MOST POPULAR</span>
-                  </div>
-                </div>
-              )}
-              
               <div className="text-center">
                 <h3 className="neo-text-big text-black mb-4">{plan.name}</h3>
                 <div className="mb-6">
