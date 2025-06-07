@@ -1,26 +1,19 @@
-
 import React from 'react';
 import { Bell, Search, Settings, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-
 export function Navbar() {
-  return (
-    <nav className="border-b border-gray-800 bg-gray-950/80 backdrop-blur-sm">
+  return <nav className="border-b border-gray-800 bg-gray-950/80 backdrop-blur-sm">
       <div className="flex h-16 items-center justify-between px-4 lg:px-6">
         {/* Enhanced Logo */}
         <div className="flex items-center space-x-3">
-          <div className="relative">
-            <img 
-              src="/lovable-uploads/62433d31-9986-454a-9285-9bda4b300e80.png" 
-              alt="The Gryt" 
-              className="h-10 w-10 object-contain"
-            />
-            <div className="absolute inset-0 bg-green-500/20 rounded-full blur-sm animate-pulse-gentle"></div>
+          <div className="relative bg-gray-950 py-0">
+            <img src="/lovable-uploads/62433d31-9986-454a-9285-9bda4b300e80.png" alt="The Gryt" className="h-10 w-10 object-contain" />
+            <div className="absolute inset-0 bg-green-500/20 blur-sm animate-pulse-gentle my-0 rounded-md px-0"></div>
           </div>
           <div className="text-xl font-bold">
             <span className="text-white">The </span>
-            <span className="text-green-500 glow-text">Gryt</span>
+            <span className="glow-text text-slate-50">Gryt</span>
           </div>
         </div>
 
@@ -28,11 +21,7 @@ export function Navbar() {
         <div className="hidden md:flex flex-1 max-w-md mx-4">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-            <input
-              type="text"
-              placeholder="Search habits, goals..."
-              className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
-            />
+            <input type="text" placeholder="Search habits, goals..." className="w-full bg-gray-800/50 border border-gray-700 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300" />
           </div>
         </div>
 
@@ -56,6 +45,5 @@ export function Navbar() {
           </Button>
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 }
