@@ -36,7 +36,16 @@ export function HomeHero() {
             </Button>
             <Button 
               onClick={() => navigate('/signin')}
-              className="neo-button text-xl px-12 py-6"
+              className="bg-white text-black border-4 border-black px-12 py-6 font-black uppercase text-xl hover:bg-gray-100 transition-all duration-100"
+              style={{ boxShadow: '4px 4px 0px #000000' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translate(2px, 2px)';
+                e.currentTarget.style.boxShadow = '2px 2px 0px #000000';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translate(0px, 0px)';
+                e.currentTarget.style.boxShadow = '4px 4px 0px #000000';
+              }}
             >
               SIGN IN
             </Button>
