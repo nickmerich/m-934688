@@ -14,7 +14,7 @@ export function HomeCTA() {
           Your Transformation Starts <span className="text-green-500">Today</span>
         </h2>
         <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed px-4 sm:px-0">
-          Join thousands of people who have already committed to building unbreakable habits and achieving their most ambitious goals.
+          Be among the first to experience a revolutionary approach to building unbreakable habits and achieving your most ambitious goals.
         </p>
         <Button 
           size="lg"

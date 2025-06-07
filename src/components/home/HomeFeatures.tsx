@@ -22,8 +22,8 @@ export function HomeFeatures() {
     },
     {
       icon: Users,
-      title: "Community Support",
-      description: "Connect with like-minded individuals who share your commitment to growth and excellence."
+      title: "Future Community",
+      description: "Soon you'll be able to connect with like-minded individuals who share your commitment to growth and excellence."
     }
   ];
 

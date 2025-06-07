@@ -14,7 +14,7 @@ export function HomeHero() {
       <div className="max-w-7xl mx-auto px-4 lg:px-6 relative">
         <div className="text-center space-y-6 sm:space-y-8">
           <Badge className="bg-green-500/10 text-green-400 border-green-500/20 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium">
-            🔥 Join 10,000+ people building unbreakable habits
+            🚀 Launch your transformation journey
           </Badge>
           
           <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight px-4 sm:px-0">
