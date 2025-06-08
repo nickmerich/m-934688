@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -31,7 +30,7 @@ export function HomeHero() {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button onClick={() => navigate('/signup')} className="neo-button-primary text-xl px-12 py-6">
-              START TRANSFORMATION
+              START TODAY
             </Button>
             <Button onClick={() => navigate('/signin')} className="bg-white text-black border-4 border-black px-12 py-6 font-black uppercase text-xl hover:bg-gray-100 transition-all duration-100" style={{
             boxShadow: '4px 4px 0px #000000'
