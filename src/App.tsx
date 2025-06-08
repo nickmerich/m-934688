@@ -17,6 +17,7 @@ import Analytics from "./pages/Analytics";
 import Community from "./pages/Community";
 import Integrations from "./pages/Integrations";
 import AIHabitPartner from "./pages/AIHabitPartner";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/community" element={<Community />} />
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/ai-habit-partner" element={<AIHabitPartner />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
