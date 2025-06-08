@@ -22,7 +22,7 @@ export function HomeHero() {
           
           <div className="max-w-4xl mx-auto">
             <p className="neo-text-medium text-black leading-relaxed">
-              DO BETTER. BE BETTER. LIVE BETTER.
+              The GRYT transforms goal-setting and self-improvement into a systematic, trackable, and community-supported process, using a combination of frameworks, analytics, and habit-forming strategies.
             </p>
           </div>
           
