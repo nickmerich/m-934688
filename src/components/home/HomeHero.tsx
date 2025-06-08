@@ -20,12 +20,9 @@ export function HomeHero() {
           </h1>
           
           <div className="max-w-4xl mx-auto">
-            <p className="neo-text-medium text-black leading-relaxed">🚀 Centralize habit tracking from all your apps
-📊 Leverage AI-driven insights
-💪 Achieve tangible results within 90 days
-✨ Transform into the person you aspire to be in just one year
-
-          </p>
+            <p className="neo-text-medium text-black leading-relaxed">
+              The GRYT transforms goal-setting and self-improvement into a systematic, trackable, and community-supported process, using a combination of frameworks, analytics, and habit-forming strategies.
+            </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
