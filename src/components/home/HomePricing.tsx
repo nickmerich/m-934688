@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,7 @@ export function HomePricing() {
 
   const plans = [
     {
-      name: "STARTER",
+      name: "ALL IN",
       price: "FREE",
       period: "",
       features: [
