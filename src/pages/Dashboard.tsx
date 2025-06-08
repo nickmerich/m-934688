@@ -1,71 +1,131 @@
 
-import React, { useState } from 'react';
-import { ResponsiveLayout } from '@/components/layout/ResponsiveLayout';
-import { StatsOverview } from '@/components/dashboard/StatsOverview';
-import { MobileStatsOverview } from '@/components/dashboard/MobileStatsOverview';
-import { HabitTracker } from '@/components/habits/HabitTracker';
-import { MobileHabitTracker } from '@/components/habits/MobileHabitTracker';
-import { GoalProgress } from '@/components/goals/GoalProgress';
-import { DailyNudge } from '@/components/ai/DailyNudge';
-import { WeeklyReflection } from '@/components/reflection/WeeklyReflection';
-import { StreakCounter } from '@/components/gamification/StreakCounter';
-import { LevelProgress } from '@/components/gamification/LevelProgress';
-import { useIsMobile } from '@/hooks/use-mobile';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Target, Trophy, Calendar, Users } from 'lucide-react';
 
 const Dashboard = () => {
-  const isMobile = useIsMobile();
-
-  const dashboardContent = (
-    <div className="max-w-7xl mx-auto space-y-6">
-      {/* Header with Level and Streak */}
-      <div className={`flex ${isMobile ? 'flex-col space-y-4' : 'items-center justify-between'}`}>
-        <div className={isMobile ? 'text-center' : ''}>
-          <h1 className={`${isMobile ? 'text-2xl' : 'text-3xl'} font-bold text-white mb-2`}>
-            Welcome back, Champion
-          </h1>
-          <p className="text-gray-400">Keep pushing towards your goals. Every day counts.</p>
-        </div>
-        <div className={`flex items-center ${isMobile ? 'justify-center' : ''} space-x-4`}>
-          <StreakCounter currentStreak={7} />
-          <LevelProgress currentLevel={3} currentWins={750} nextLevelWins={1000} />
-        </div>
-      </div>
-
-      {/* Stats Overview */}
-      {isMobile ? <MobileStatsOverview /> : <StatsOverview />}
-
-      {/* Main Content Grid */}
-      {isMobile ? (
-        // Mobile Layout - Single Column
-        <div className="space-y-6">
-          <MobileHabitTracker />
-          <GoalProgress />
-          <DailyNudge />
-          <WeeklyReflection />
-        </div>
-      ) : (
-        // Desktop Layout - Two Column
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Habits and Goals */}
-          <div className="lg:col-span-2 space-y-6">
-            <HabitTracker />
-            <GoalProgress />
-          </div>
-
-          {/* Right Column - AI Nudges and Reflection */}
-          <div className="space-y-6">
-            <DailyNudge />
-            <WeeklyReflection />
-          </div>
-        </div>
-      )}
-    </div>
-  );
+  const navigate = useNavigate();
 
   return (
-    <ResponsiveLayout>
-      {dashboardContent}
-    </ResponsiveLayout>
+    <div className="min-h-screen bg-white no-gradients">
+      {/* Navigation */}
+      <nav className="bg-white border-b-4 border-black">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6">
+          <div className="flex h-20 items-center justify-between">
+            {/* Back Button */}
+            <Button
+              onClick={() => navigate('/')}
+              className="neo-button flex items-center space-x-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span>BACK TO HOME</span>
+            </Button>
+
+            {/* Logo */}
+            <div className="flex items-center">
+              <img 
+                alt="The Gryt" 
+                src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" 
+                className="h-12 w-auto object-cover" 
+              />
+            </div>
+
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-4">
+              <Button onClick={() => navigate('/habits')} className="neo-button">
+                HABITS
+              </Button>
+              <Button onClick={() => navigate('/goals')} className="neo-button">
+                GOALS
+              </Button>
+              <Button onClick={() => navigate('/analytics')} className="neo-button">
+                ANALYTICS
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <section className="bg-white py-20 lg:py-32 no-gradients">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6">
+          <div className="text-center space-y-12 mb-16">
+            <div className="neo-card-green inline-block">
+              <span className="neo-text-medium text-black">🚀 YOUR COMMAND CENTER</span>
+            </div>
+            
+            <h1 className="neo-text-huge text-black">
+              DASHBOARD
+              <span className="block" style={{
+                color: 'hsl(var(--neon-green))'
+              }}>
+                OVERVIEW
+              </span>
+            </h1>
+          </div>
+
+          {/* Stats Grid */}
+          <div className="neo-grid mb-16">
+            <div className="neo-card-green">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
+                  <Target className="h-8 w-8 text-white" strokeWidth={3} />
+                </div>
+                <h3 className="neo-text-big text-black mb-4">ACTIVE HABITS</h3>
+                <p className="neo-text-huge text-black">12</p>
+              </div>
+            </div>
+
+            <div className="neo-card-pink">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
+                  <Trophy className="h-8 w-8 text-white" strokeWidth={3} />
+                </div>
+                <h3 className="neo-text-big text-black mb-4">GOALS ACHIEVED</h3>
+                <p className="neo-text-huge text-black">5</p>
+              </div>
+            </div>
+
+            <div className="neo-card">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
+                  <Calendar className="h-8 w-8 text-white" strokeWidth={3} />
+                </div>
+                <h3 className="neo-text-big text-black mb-4">STREAK DAYS</h3>
+                <p className="neo-text-huge text-black">47</p>
+              </div>
+            </div>
+
+            <div className="neo-card-charcoal">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
+                  <Users className="h-8 w-8 text-white" strokeWidth={3} />
+                </div>
+                <h3 className="neo-text-big text-white mb-4">COMMUNITY RANK</h3>
+                <p className="neo-text-huge text-white">#42</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="text-center space-y-8">
+            <h2 className="neo-text-big text-black">QUICK ACTIONS</h2>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button onClick={() => navigate('/habits')} className="neo-button-primary text-xl px-12 py-6">
+                TRACK HABITS
+              </Button>
+              <Button onClick={() => navigate('/goals')} className="neo-button-accent text-xl px-12 py-6">
+                SET GOALS
+              </Button>
+              <Button onClick={() => navigate('/analytics')} className="neo-button text-xl px-12 py-6">
+                VIEW ANALYTICS
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
