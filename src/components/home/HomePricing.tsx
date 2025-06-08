@@ -9,7 +9,7 @@ export function HomePricing() {
 
   const plans = [
     {
-      name: "ALL IN",
+      name: "STARTER",
       price: "FREE",
       period: "",
       features: [
@@ -23,7 +23,7 @@ export function HomePricing() {
       popular: false
     },
     {
-      name: "GRYT WARRIOR",
+      name: "ALL IN",
       price: "$9",
       period: "PER MONTH",
       features: [
