@@ -1,0 +1,45 @@
+
+@layer base {
+  .neo-text-massive {
+    @apply text-4xl md:text-6xl lg:text-8xl font-black uppercase leading-none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+  }
+
+  .neo-text-huge {
+    @apply text-2xl md:text-4xl lg:text-5xl font-black uppercase leading-tight;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+  }
+
+  .neo-text-big {
+    @apply text-xl md:text-2xl lg:text-3xl font-black uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+  }
+
+  .neo-text-medium {
+    @apply text-lg md:text-xl font-bold uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Typography overrides */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Button overrides */
+  button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+}
