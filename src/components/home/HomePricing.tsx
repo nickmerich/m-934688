@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,7 @@ export function HomePricing() {
     {
       name: "STARTER",
       price: "FREE",
-      period: "FOREVER",
+      period: "",
       features: [
         "BASIC HABIT TRACKING",
         "3 ACTIVE GOALS",
