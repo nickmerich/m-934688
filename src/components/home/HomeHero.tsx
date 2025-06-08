@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,11 +12,11 @@ export function HomeHero() {
           </div>
           
           <h1 className="neo-text-massive text-black max-w-5xl mx-auto">
-            REACH YOUR POTENTIAL
+            BUILD HABITS THAT
             <span className="block" style={{
             color: 'hsl(var(--neon-green))'
           }}>
-              ONE DAY AT A TIME
+              CHANGE EVERYTHING
             </span>
           </h1>
           
