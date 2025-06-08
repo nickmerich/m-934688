@@ -1,22 +1,14 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-
 export function HomeNavigation() {
   const navigate = useNavigate();
-
-  return (
-    <nav className="bg-white border-b-4 border-black sticky top-0 z-50">
+  return <nav className="bg-white border-b-4 border-black sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/f846faf6-830e-4f67-828a-5af1b2a8eb01.png" 
-              alt="The Gryt" 
-              className="h-12 w-auto object-contain"
-            />
+            <img alt="The Gryt" src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" className="h-12 w-auto object-cover" />
           </div>
 
           {/* Navigation Actions */}
@@ -30,6 +22,5 @@ export function HomeNavigation() {
           </div>
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 }
