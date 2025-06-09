@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -80,14 +79,8 @@ const SignUp = () => {
               <span>BACK TO HOME</span>
             </Button>
 
-            {/* Logo */}
-            <div className="flex items-center">
-              <img 
-                alt="The Gryt" 
-                src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" 
-                className="h-12 w-auto object-cover" 
-              />
-            </div>
+            {/* Empty middle section */}
+            <div></div>
           </div>
         </div>
       </nav>
