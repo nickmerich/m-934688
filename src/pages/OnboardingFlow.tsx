@@ -76,7 +76,7 @@ const OnboardingFlow = () => {
             <div className="flex justify-center">
               <div className="neo-card-green inline-block p-6">
                 <img 
-                  src="/lovable-uploads/62433d31-9986-454a-9285-9bda4b300e80.png" 
+                  src="/lovable-uploads/b4bc62c0-02e4-4cf2-ade9-561284c211a2.png" 
                   alt="The Gryt" 
                   className="h-16 w-16 object-contain mx-auto"
                 />
