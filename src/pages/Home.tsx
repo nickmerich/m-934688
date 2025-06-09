@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,8 +11,8 @@ const Home = () => {
       <nav className="bg-white border-b-4 border-black">
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="flex h-20 items-center justify-between">
-            <div className="neo-card-green inline-block">
-              <span className="neo-text-medium text-black">⚡ THE GRYT</span>
+            <div className="flex items-center">
+              {/* Logo only, removed THE GRYT text */}
             </div>
             <Link to="/signin" className="neo-button">
               GET STARTED
@@ -24,8 +25,12 @@ const Home = () => {
       <section className="bg-white py-20 lg:py-32 no-gradients">
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="text-center space-y-12 mb-16">
-            <div className="neo-card-pink inline-block">
-              <span className="neo-text-medium text-black">🤖 AI POWERED HABIT TRACKING</span>
+            {/* Much smaller pink badge */}
+            <div className="inline-block bg-pink-500 border-4 border-black px-3 py-1" style={{
+              background: 'hsl(var(--hot-pink))',
+              boxShadow: '4px 4px 0px #000000'
+            }}>
+              <span className="text-sm font-bold text-black">🤖 AI POWERED HABIT TRACKING</span>
             </div>
             
             <h1 className="neo-text-huge text-black">
