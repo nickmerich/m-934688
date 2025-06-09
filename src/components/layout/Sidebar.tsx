@@ -1,89 +1,108 @@
 
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { 
-  BarChart3, 
-  Target, 
-  Calendar, 
-  User, 
-  Trophy, 
-  Puzzle,
-  ChevronLeft,
-  ChevronRight 
-} from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { 
+  Home, 
+  Target, 
+  BarChart3, 
+  Settings, 
+  Zap, 
+  User,
+  LogOut,
+  Sparkles
+} from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
-interface SidebarProps {
-  isCollapsed: boolean;
-  onToggle: () => void;
-}
-
-const menuItems = [
-  { icon: BarChart3, label: 'Dashboard', path: '/dashboard' },
-  { icon: Calendar, label: 'Habits', path: '/habits' },
-  { icon: Target, label: 'Goals', path: '/goals' },
-  { icon: Trophy, label: 'Analytics', path: '/analytics' },
-  { icon: User, label: 'Profile', path: '/profile' },
-  { icon: Puzzle, label: 'Integrations', path: '/integrations' },
-];
-
-export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
-  const navigate = useNavigate();
+const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
+
+  const navigation = [
+    { name: 'DASHBOARD', href: '/dashboard', icon: Home },
+    { name: 'HABITS', href: '/habits', icon: Zap },
+    { name: 'GOALS', href: '/goals', icon: Target },
+    { name: 'ANALYTICS', href: '/analytics', icon: BarChart3 },
+    { name: 'INTEGRATIONS', href: '/integrations', icon: Settings },
+    { name: 'AI PARTNER', href: '/ai-habit-partner', icon: Sparkles },
+    { name: 'PROFILE', href: '/profile', icon: User },
+  ];
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
 
   return (
-    <div className={cn(
-      "bg-gray-900 border-r border-gray-800 transition-all duration-300 flex flex-col",
-      isCollapsed ? "w-16" : "w-64"
-    )}>
-      {/* Toggle Button */}
-      <div className="p-4 border-b border-gray-800">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onToggle}
-          className="text-gray-400 hover:text-white hover:bg-gray-800"
-        >
-          {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
-        </Button>
-      </div>
-
-      {/* Menu Items */}
-      <nav className="flex-1 p-4 space-y-2">
-        {menuItems.map((item) => {
-          const isActive = location.pathname === item.path;
-          return (
-            <Button
-              key={item.path}
-              variant="ghost"
-              onClick={() => navigate(item.path)}
-              className={cn(
-                "w-full justify-start text-gray-400 hover:text-white hover:bg-gray-800",
-                isActive && "bg-green-500/10 text-green-500 border border-green-500/20",
-                isCollapsed ? "px-2" : "px-4"
-              )}
-            >
-              <item.icon className={cn("h-5 w-5", !isCollapsed && "mr-3")} />
-              {!isCollapsed && <span>{item.label}</span>}
-            </Button>
-          );
-        })}
-      </nav>
-
-      {/* Bottom Section */}
-      {!isCollapsed && (
-        <div className="p-4 border-t border-gray-800">
-          <div className="text-xs text-gray-500 mb-2">Your Progress</div>
-          <div className="bg-gray-800 rounded-lg p-3">
-            <div className="text-sm text-white font-medium">Level 3 Warrior</div>
-            <div className="text-xs text-gray-400">750 / 1000 XP</div>
-            <div className="w-full bg-gray-700 rounded-full h-2 mt-2">
-              <div className="bg-green-500 h-2 rounded-full" style={{ width: '75%' }}></div>
-            </div>
+    <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+      <div className="flex flex-col flex-grow bg-white border-r-4 border-black">
+        {/* Logo */}
+        <div className="flex items-center flex-shrink-0 px-6 py-8 border-b-4 border-black">
+          <div className="neo-card-green inline-block">
+            <span className="neo-text-medium text-black">⚡ THE GRYT</span>
           </div>
         </div>
-      )}
+
+        {/* User Info */}
+        {user && (
+          <div className="px-6 py-4 border-b-4 border-black">
+            <div className="neo-card-pink p-3">
+              <p className="neo-text-medium text-black truncate">
+                {user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'}
+              </p>
+              <p className="text-sm text-black/70 truncate">{user.email}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Navigation */}
+        <nav className="flex-1 px-6 py-8 space-y-4">
+          {navigation.map((item) => {
+            const isActive = location.pathname === item.href;
+            const IconComponent = item.icon;
+            
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`group flex items-center px-4 py-3 text-sm font-bold border-4 border-black transition-all duration-200 ${
+                  isActive
+                    ? 'bg-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
+                    : 'bg-white text-black hover:bg-gray-100 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                }`}
+              >
+                <IconComponent
+                  className={`mr-3 h-5 w-5 ${
+                    isActive ? 'text-white' : 'text-black'
+                  }`}
+                  strokeWidth={3}
+                />
+                {item.name}
+                {item.name === 'AI PARTNER' && (
+                  <Badge className="ml-auto bg-yellow-400 text-black border-2 border-black">
+                    NEW
+                  </Badge>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Sign Out Button */}
+        <div className="px-6 py-4 border-t-4 border-black">
+          <Button
+            onClick={handleSignOut}
+            className="neo-button w-full flex items-center justify-center space-x-2"
+          >
+            <LogOut className="h-4 w-4" />
+            <span>SIGN OUT</span>
+          </Button>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Sidebar;
