@@ -111,23 +111,35 @@ export function useNetworkStatus() {
     window.addEventListener('online', handleOnline)
     window.addEventListener('offline', handleOffline)
 
-    // @ts-ignore - experimental API
-    if ('connection' in navigator) {
-      // @ts-ignore
-      setConnectionType(navigator.connection.effectiveType || 'unknown')
-      
-      // @ts-ignore
-      const connection = navigator.connection
-      const updateConnection = () => {
-        setConnectionType(connection.effectiveType || 'unknown')
-      }
-      
-      connection.addEventListener('change', updateConnection)
-      
-      return () => {
-        window.removeEventListener('online', handleOnline)
-        window.removeEventListener('offline', handleOffline)
-        connection.removeEventListener('change', updateConnection)
+    // Check if the experimental Network Information API is available
+    if ('connection' in navigator || 'mozConnection' in navigator || 'webkitConnection' in navigator) {
+      try {
+        // @ts-ignore - experimental API
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
+        
+        if (connection && connection.effectiveType) {
+          setConnectionType(connection.effectiveType)
+        }
+        
+        const updateConnection = () => {
+          if (connection && connection.effectiveType) {
+            setConnectionType(connection.effectiveType)
+          }
+        }
+        
+        if (connection && typeof connection.addEventListener === 'function') {
+          connection.addEventListener('change', updateConnection)
+          
+          return () => {
+            window.removeEventListener('online', handleOnline)
+            window.removeEventListener('offline', handleOffline)
+            if (connection && typeof connection.removeEventListener === 'function') {
+              connection.removeEventListener('change', updateConnection)
+            }
+          }
+        }
+      } catch (error) {
+        console.warn('Network Information API not fully supported:', error)
       }
     }
 
