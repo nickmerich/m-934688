@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
 import { Plus, Filter, ArrowUpDown } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { MobileOptimizedCard, MobileCardHeader, MobileCardContent } from '@/components/mobile/MobileOptimizedCard';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { AddHabitModal } from './AddHabitModal';
 import { MobileHabitCard } from './MobileHabitCard';
+import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
 
 interface Habit {
   id: string;
@@ -33,8 +34,10 @@ interface MobileHabitTrackerProps {
 export function MobileHabitTracker({ className }: MobileHabitTrackerProps) {
   const [habits, setHabits] = useState(mockHabits);
   const [filter, setFilter] = useState<string>('all');
+  const { triggerHaptic } = useHapticFeedback();
 
   const toggleHabit = (habitId: string) => {
+    triggerHaptic('medium');
     setHabits(habits.map(habit => 
       habit.id === habitId 
         ? { ...habit, completed: !habit.completed }
@@ -63,11 +66,17 @@ export function MobileHabitTracker({ className }: MobileHabitTrackerProps) {
     };
 
     setHabits([...habits, newHabit]);
+    triggerHaptic('light');
+  };
+
+  const handleFilterChange = (newFilter: string) => {
+    triggerHaptic('selection');
+    setFilter(newFilter);
   };
 
   const completedToday = habits.filter(h => h.completed).length;
   const totalHabits = habits.length;
-  const completionRate = (completedToday / totalHabits) * 100;
+  const completionRate = totalHabits > 0 ? (completedToday / totalHabits) * 100 : 0;
 
   const filteredHabits = filter === 'all' 
     ? habits 
@@ -76,20 +85,20 @@ export function MobileHabitTracker({ className }: MobileHabitTrackerProps) {
     : habits.filter(h => !h.completed);
 
   return (
-    <Card className={`bg-gray-900 border-gray-800 ${className}`}>
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between mb-3">
-          <CardTitle className="text-lg text-white">Today's Habits</CardTitle>
+    <MobileOptimizedCard className={`mobile-card-comfortable ${className}`} animated={false}>
+      <MobileCardHeader>
+        <div className="mobile-flex-between mb-3">
+          <h2 className="mobile-text-lg font-semibold text-white">Today's Habits</h2>
           <AddHabitModal onAddHabit={addNewHabit} />
         </div>
         
         {/* Progress */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm">
+          <div className="mobile-flex-between mobile-text-sm">
             <span className="text-gray-400">Progress: {completedToday}/{totalHabits}</span>
             <span className="text-green-400 font-medium">{Math.round(completionRate)}%</span>
           </div>
-          <Progress value={completionRate} className="h-2" />
+          <Progress value={completionRate} className="h-2 bg-gray-800" />
         </div>
 
         {/* Mobile Filters */}
@@ -99,34 +108,37 @@ export function MobileHabitTracker({ className }: MobileHabitTrackerProps) {
               key={filterType}
               variant={filter === filterType ? 'default' : 'outline'}
               size="sm"
-              onClick={() => setFilter(filterType)}
-              className={`text-xs px-3 h-8 capitalize ${
+              onClick={() => handleFilterChange(filterType)}
+              className={`mobile-button mobile-text-xs px-3 h-8 capitalize ${
                 filter === filterType 
-                  ? 'bg-green-500 hover:bg-green-600 text-white' 
-                  : 'border-gray-600 text-gray-300 hover:bg-gray-800'
+                  ? 'bg-green-500 hover:bg-green-600 text-white border-green-500' 
+                  : 'border-gray-600 text-gray-300 hover:bg-gray-800 bg-transparent'
               }`}
             >
               {filterType}
             </Button>
           ))}
         </div>
-      </CardHeader>
+      </MobileCardHeader>
       
-      <CardContent className="space-y-3 px-4">
-        {filteredHabits.map((habit) => (
-          <MobileHabitCard
-            key={habit.id}
-            habit={habit}
-            onToggle={toggleHabit}
-          />
-        ))}
+      <MobileCardContent className="space-y-3">
+        <div className="mobile-scroll max-h-96 space-y-3">
+          {filteredHabits.map((habit) => (
+            <MobileHabitCard
+              key={habit.id}
+              habit={habit}
+              onToggle={toggleHabit}
+            />
+          ))}
+        </div>
+        
         {filteredHabits.length === 0 && (
           <div className="text-center py-8 text-gray-400">
-            <div className="text-sm">No habits found</div>
-            <div className="text-xs mt-1">Try adjusting your filter</div>
+            <div className="mobile-text-sm">No habits found</div>
+            <div className="mobile-text-xs mt-1">Try adjusting your filter</div>
           </div>
         )}
-      </CardContent>
-    </Card>
+      </MobileCardContent>
+    </MobileOptimizedCard>
   );
 }

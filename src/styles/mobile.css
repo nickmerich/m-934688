@@ -1,0 +1,293 @@
+
+@layer base {
+  /* Mobile viewport optimizations */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Safe area handling for iOS devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Touch optimization */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+
+  .touch-pan-y {
+    touch-action: pan-y;
+  }
+
+  /* Mobile-specific typography */
+  .mobile-text-xs {
+    @apply text-xs leading-4;
+  }
+
+  .mobile-text-sm {
+    @apply text-sm leading-5;
+  }
+
+  .mobile-text-base {
+    @apply text-base leading-6;
+  }
+
+  .mobile-text-lg {
+    @apply text-lg leading-7;
+  }
+
+  .mobile-text-xl {
+    @apply text-xl leading-8;
+  }
+
+  /* Mobile spacing utilities */
+  .mobile-spacing-xs {
+    @apply p-2 space-y-2;
+  }
+
+  .mobile-spacing-sm {
+    @apply p-3 space-y-3;
+  }
+
+  .mobile-spacing-md {
+    @apply p-4 space-y-4;
+  }
+
+  .mobile-spacing-lg {
+    @apply p-6 space-y-6;
+  }
+
+  /* Mobile card optimizations */
+  .mobile-card {
+    @apply rounded-lg border border-gray-800 bg-gray-900/50 backdrop-blur-sm;
+    @apply shadow-lg hover:shadow-xl transition-all duration-200;
+    @apply min-h-[44px] touch-manipulation;
+  }
+
+  .mobile-card-compact {
+    @apply mobile-card p-3 space-y-2;
+  }
+
+  .mobile-card-comfortable {
+    @apply mobile-card p-4 space-y-3;
+  }
+
+  /* Mobile button optimizations */
+  .mobile-button {
+    @apply min-h-[44px] min-w-[44px] touch-manipulation;
+    @apply transition-all duration-200 active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  .mobile-button-primary {
+    @apply mobile-button bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg px-4 py-3;
+  }
+
+  .mobile-button-secondary {
+    @apply mobile-button bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg px-4 py-3 border border-gray-700;
+  }
+
+  .mobile-button-ghost {
+    @apply mobile-button hover:bg-gray-800 text-gray-300 hover:text-white font-medium rounded-lg px-4 py-3;
+  }
+
+  /* Mobile form optimizations */
+  .mobile-input {
+    @apply min-h-[44px] touch-manipulation;
+    @apply bg-gray-800 border border-gray-700 rounded-lg px-4 py-3;
+    @apply text-white placeholder-gray-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent;
+    @apply transition-all duration-200;
+  }
+
+  /* Mobile navigation optimizations */
+  .mobile-nav-item {
+    @apply min-h-[44px] flex items-center justify-center;
+    @apply touch-manipulation transition-all duration-200;
+    @apply active:scale-95 hover:bg-gray-800 rounded-lg;
+  }
+
+  /* Mobile scroll optimizations */
+  .mobile-scroll {
+    @apply overflow-auto overscroll-contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  .mobile-scroll-snap {
+    @apply mobile-scroll;
+    scroll-snap-type: y mandatory;
+  }
+
+  .mobile-scroll-snap-item {
+    scroll-snap-align: start;
+  }
+
+  /* Mobile grid optimizations */
+  .mobile-grid {
+    @apply grid gap-3;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .mobile-grid-2 {
+    @apply grid grid-cols-2 gap-3;
+  }
+
+  .mobile-grid-3 {
+    @apply grid grid-cols-3 gap-2;
+  }
+
+  /* Mobile flexbox optimizations */
+  .mobile-flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .mobile-flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .mobile-flex-start {
+    @apply flex items-center justify-start;
+  }
+
+  .mobile-flex-end {
+    @apply flex items-center justify-end;
+  }
+
+  /* Mobile animations */
+  .mobile-fade-in {
+    animation: mobile-fade-in 0.3s ease-out;
+  }
+
+  .mobile-slide-up {
+    animation: mobile-slide-up 0.4s ease-out;
+  }
+
+  .mobile-scale-in {
+    animation: mobile-scale-in 0.2s ease-out;
+  }
+
+  @keyframes mobile-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mobile-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mobile-scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Performance optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .contain-layout {
+    contain: layout;
+  }
+
+  .contain-paint {
+    contain: paint;
+  }
+
+  .contain-size {
+    contain: size;
+  }
+
+  .contain-strict {
+    contain: strict;
+  }
+}
+
+/* Media queries for specific mobile optimizations */
+@media (max-width: 767px) {
+  /* Force mobile-first approach */
+  .container {
+    @apply px-4;
+  }
+
+  /* Optimize text for mobile reading */
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+    line-height: 1.5;
+  }
+
+  /* Optimize buttons for touch */
+  button, .btn, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Optimize form inputs */
+  input, select, textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  /* Optimize navigation */
+  nav a, nav button {
+    min-height: 44px;
+  }
+}
+
+/* Landscape orientation optimizations */
+@media (max-width: 767px) and (orientation: landscape) {
+  .mobile-landscape-compact {
+    @apply py-2;
+  }
+
+  .mobile-landscape-nav {
+    @apply h-12;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .mobile-crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
