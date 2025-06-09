@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -26,7 +25,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="text-center space-y-12 mb-16">
             <div className="neo-card-pink inline-block">
-              <span className="neo-text-medium text-black">🚀 HABIT TRACKING REIMAGINED</span>
+              <span className="neo-text-medium text-black">🤖 AI POWERED HABIT TRACKING</span>
             </div>
             
             <h1 className="neo-text-huge text-black">
@@ -47,7 +46,6 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link to="/signin" className="neo-button-primary">
                 START YOUR JOURNEY
-                <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
               </Link>
               <Link to="/signin" className="neo-button">
                 SIGN IN
