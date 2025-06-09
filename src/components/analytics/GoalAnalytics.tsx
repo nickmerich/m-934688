@@ -54,7 +54,7 @@ export function GoalAnalytics() {
               <Tooltip content={<CustomTooltip />} />
               <Bar 
                 dataKey="completed" 
-                fill="hsl(var(--hot-pink))"
+                fill="hsl(var(--medium-grey))"
                 stroke="#000000"
                 strokeWidth={2}
                 radius={[4, 4, 0, 0]}
@@ -68,10 +68,10 @@ export function GoalAnalytics() {
           <h4 className="neo-text-medium text-black mb-3">ACTIVE GOALS</h4>
           <div className="space-y-3">
             {recentGoals.map((goal, index) => (
-              <div key={index} className="p-3 neo-card-pink">
+              <div key={index} className="p-3 neo-card-grey">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="neo-text-medium text-black text-sm">{goal.name}</span>
-                  <span className="text-black text-xs">{goal.daysLeft} DAYS LEFT</span>
+                  <span className="neo-text-medium text-white text-sm">{goal.name}</span>
+                  <span className="text-white text-xs">{goal.daysLeft} DAYS LEFT</span>
                 </div>
                 <div className="w-full bg-black h-3 border-2 border-black">
                   <div 
@@ -79,7 +79,7 @@ export function GoalAnalytics() {
                     style={{ width: `${goal.progress}%` }}
                   ></div>
                 </div>
-                <div className="neo-text-medium text-black text-xs mt-1">{goal.progress}% COMPLETE</div>
+                <div className="neo-text-medium text-white text-xs mt-1">{goal.progress}% COMPLETE</div>
               </div>
             ))}
           </div>

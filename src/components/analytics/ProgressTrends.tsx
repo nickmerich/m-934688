@@ -67,10 +67,10 @@ export function ProgressTrends() {
               <Line 
                 type="monotone" 
                 dataKey="goals" 
-                stroke="hsl(var(--hot-pink))" 
+                stroke="hsl(var(--medium-grey))" 
                 strokeWidth={4}
                 name="Goals Progress"
-                dot={{ fill: 'hsl(var(--hot-pink))', strokeWidth: 3, r: 6, stroke: '#000000' }}
+                dot={{ fill: 'hsl(var(--medium-grey))', strokeWidth: 3, r: 6, stroke: '#000000' }}
               />
             </LineChart>
           </ResponsiveContainer>

@@ -73,9 +73,9 @@ export function StreakVisualization() {
               <Area 
                 type="monotone" 
                 dataKey="streak" 
-                stroke="hsl(var(--hot-pink))"
+                stroke="hsl(var(--medium-grey))"
                 strokeWidth={3}
-                fill="hsl(var(--hot-pink))"
+                fill="hsl(var(--medium-grey))"
                 fillOpacity={0.3}
               />
             </AreaChart>

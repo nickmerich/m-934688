@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
@@ -7,7 +6,7 @@ export function HabitAnalytics() {
   const habitData = [
     { name: 'Completed', value: 68, color: 'hsl(var(--neon-green))' },
     { name: 'Missed', value: 20, color: '#EF4444' },
-    { name: 'Partially Done', value: 12, color: 'hsl(var(--hot-pink))' }
+    { name: 'Partially Done', value: 12, color: 'hsl(var(--medium-grey))' }
   ];
 
   const topHabits = [

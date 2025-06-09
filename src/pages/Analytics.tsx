@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -144,11 +143,11 @@ const Analytics = () => {
                     <div className="text-sm text-black mt-1">Morning meditation</div>
                   </div>
                 </div>
-                <div className="neo-card-pink">
+                <div className="neo-card-grey">
                   <div className="text-center">
-                    <Calendar className="h-8 w-8 mx-auto mb-2" />
-                    <div className="neo-text-medium text-black">OPTIMAL TIME: 7-9 AM</div>
-                    <div className="text-sm text-black mt-1">Peak performance window</div>
+                    <Calendar className="h-8 w-8 mx-auto mb-2 text-white" />
+                    <div className="neo-text-medium text-white">OPTIMAL TIME: 7-9 AM</div>
+                    <div className="text-sm text-white mt-1">Peak performance window</div>
                   </div>
                 </div>
                 <div className="neo-card">

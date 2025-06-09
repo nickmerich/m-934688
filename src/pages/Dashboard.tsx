@@ -70,13 +70,13 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="neo-card-pink">
+            <div className="neo-card-grey">
               <div className="text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
                   <Trophy className="h-8 w-8 text-white" strokeWidth={3} />
                 </div>
-                <h3 className="neo-text-big text-black mb-4">GOALS ACHIEVED</h3>
-                <p className="neo-text-huge text-black">5</p>
+                <h3 className="neo-text-big text-white mb-4">GOALS ACHIEVED</h3>
+                <p className="neo-text-huge text-white">5</p>
               </div>
             </div>
 
