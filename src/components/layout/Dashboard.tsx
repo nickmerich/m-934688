@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   useStockData, useMarketIndices, useCurrencyPairs, 
@@ -6,7 +5,7 @@ import {
   generatePriceHistory 
 } from '@/utils/stocksApi';
 import { Navbar } from '@/components/layout/Navbar';
-import { Sidebar } from '@/components/layout/Sidebar';
+import Sidebar from '@/components/layout/Sidebar';
 import { StockCard } from '@/components/stocks/StockCard';
 import { StockChart } from '@/components/stocks/StockChart';
 import { MarketOverview } from '@/components/markets/MarketOverview';

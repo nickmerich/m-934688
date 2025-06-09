@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
-import { MobileNavbar } from '@/components/layout/MobileNavbar';
-import { Sidebar } from '@/components/layout/Sidebar';
+import MobileNavbar from '@/components/layout/MobileNavbar';
+import Sidebar from '@/components/layout/Sidebar';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ResponsiveLayoutProps {
