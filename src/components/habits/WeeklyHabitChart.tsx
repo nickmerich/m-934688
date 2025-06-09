@@ -17,8 +17,8 @@ export function WeeklyHabitChart() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-2 shadow-lg">
-          <p className="text-white text-sm">{`${label}: ${payload[0].value}/${payload[0].payload.total} habits`}</p>
+        <div className="neo-card bg-white p-3">
+          <p className="neo-text-medium text-black">{`${label}: ${payload[0].value}/${payload[0].payload.total} habits`}</p>
         </div>
       );
     }
@@ -26,9 +26,9 @@ export function WeeklyHabitChart() {
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
+    <>
       <CardHeader>
-        <CardTitle className="text-white">This Week's Progress</CardTitle>
+        <CardTitle className="neo-text-medium text-black">THIS WEEK'S PROGRESS</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-48">
@@ -38,28 +38,30 @@ export function WeeklyHabitChart() {
                 dataKey="day" 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                tick={{ fill: '#000000', fontSize: 12, fontWeight: 'bold' }}
               />
               <YAxis 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                tick={{ fill: '#000000', fontSize: 12, fontWeight: 'bold' }}
                 domain={[0, 5]}
               />
               <Tooltip content={<CustomTooltip />} />
               <Bar 
                 dataKey="completed" 
-                fill="#10B981"
+                fill="hsl(var(--neon-green))"
+                stroke="#000000"
+                strokeWidth={2}
                 radius={[4, 4, 0, 0]}
               />
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-4 flex justify-between text-sm text-gray-400">
-          <span>Weekly average: 3.7/5 habits</span>
-          <span className="text-green-400">74% completion rate</span>
+        <div className="mt-4 flex justify-between">
+          <span className="neo-text-medium text-black">WEEKLY AVERAGE: 3.7/5</span>
+          <span className="neo-text-medium text-green-600">74% COMPLETION</span>
         </div>
       </CardContent>
-    </Card>
+    </>
   );
 }

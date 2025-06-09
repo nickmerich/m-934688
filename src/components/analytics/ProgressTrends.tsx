@@ -18,10 +18,10 @@ export function ProgressTrends() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-lg">
-          <p className="text-white text-sm font-medium mb-1">{label}</p>
+        <div className="neo-card bg-white p-3">
+          <p className="neo-text-medium text-black mb-1">{label}</p>
           {payload.map((item: any, index: number) => (
-            <p key={index} className="text-sm" style={{ color: item.color }}>
+            <p key={index} className="text-sm text-black">
               {item.name}: {item.value}%
             </p>
           ))}
@@ -32,9 +32,9 @@ export function ProgressTrends() {
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
+    <>
       <CardHeader>
-        <CardTitle className="text-white">Progress Trends</CardTitle>
+        <CardTitle className="neo-text-medium text-black">PROGRESS TRENDS</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-64">
@@ -44,42 +44,42 @@ export function ProgressTrends() {
                 dataKey="week" 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                tick={{ fill: '#000000', fontSize: 12, fontWeight: 'bold' }}
               />
               <YAxis 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                tick={{ fill: '#000000', fontSize: 12, fontWeight: 'bold' }}
                 domain={[0, 100]}
               />
               <Tooltip content={<CustomTooltip />} />
               <Legend 
-                formatter={(value) => <span className="text-gray-300">{value}</span>}
+                formatter={(value) => <span className="neo-text-medium text-black">{value}</span>}
               />
               <Line 
                 type="monotone" 
                 dataKey="habits" 
-                stroke="#10B981" 
-                strokeWidth={3}
+                stroke="hsl(var(--neon-green))" 
+                strokeWidth={4}
                 name="Habits Completion"
-                dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
+                dot={{ fill: 'hsl(var(--neon-green))', strokeWidth: 3, r: 6, stroke: '#000000' }}
               />
               <Line 
                 type="monotone" 
                 dataKey="goals" 
-                stroke="#8B5CF6" 
-                strokeWidth={3}
+                stroke="hsl(var(--hot-pink))" 
+                strokeWidth={4}
                 name="Goals Progress"
-                dot={{ fill: '#8B5CF6', strokeWidth: 2, r: 4 }}
+                dot={{ fill: 'hsl(var(--hot-pink))', strokeWidth: 3, r: 6, stroke: '#000000' }}
               />
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-4 flex justify-between text-sm text-gray-400">
-          <span>8-week trend analysis</span>
-          <span className="text-green-400">↑ 24% improvement overall</span>
+        <div className="mt-4 flex justify-between">
+          <span className="neo-text-medium text-black">8-WEEK TREND</span>
+          <span className="neo-text-medium text-green-600">↑ 24% IMPROVEMENT</span>
         </div>
       </CardContent>
-    </Card>
+    </>
   );
 }

@@ -7,7 +7,7 @@ export function GoalAnalytics() {
   const goalProgressData = [
     { category: 'Health', completed: 8, total: 10 },
     { category: 'Career', completed: 5, total: 8 },
-    { category: 'Learning', completed: 12, total: 15 },
+    { category: 'Education', completed: 12, total: 15 },
     { category: 'Personal', completed: 6, total: 9 },
     { category: 'Finance', completed: 3, total: 5 }
   ];
@@ -22,8 +22,8 @@ export function GoalAnalytics() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-2 shadow-lg">
-          <p className="text-white text-sm">{`${label}: ${payload[0].value}/${payload[0].payload.total} goals`}</p>
+        <div className="neo-card bg-white p-3">
+          <p className="neo-text-medium text-black">{`${label}: ${payload[0].value}/${payload[0].payload.total} goals`}</p>
         </div>
       );
     }
@@ -31,9 +31,9 @@ export function GoalAnalytics() {
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
+    <>
       <CardHeader>
-        <CardTitle className="text-white">Goal Analytics</CardTitle>
+        <CardTitle className="neo-text-medium text-black">GOAL ANALYTICS</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Goals by Category Chart */}
@@ -44,17 +44,19 @@ export function GoalAnalytics() {
                 dataKey="category" 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                tick={{ fill: '#000000', fontSize: 12, fontWeight: 'bold' }}
               />
               <YAxis 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                tick={{ fill: '#000000', fontSize: 12, fontWeight: 'bold' }}
               />
               <Tooltip content={<CustomTooltip />} />
               <Bar 
                 dataKey="completed" 
-                fill="#8B5CF6"
+                fill="hsl(var(--hot-pink))"
+                stroke="#000000"
+                strokeWidth={2}
                 radius={[4, 4, 0, 0]}
               />
             </BarChart>
@@ -63,26 +65,26 @@ export function GoalAnalytics() {
 
         {/* Active Goals Progress */}
         <div>
-          <h4 className="text-white font-medium mb-3">Active Goals Progress</h4>
+          <h4 className="neo-text-medium text-black mb-3">ACTIVE GOALS</h4>
           <div className="space-y-3">
             {recentGoals.map((goal, index) => (
-              <div key={index} className="p-3 bg-gray-800 rounded-lg">
+              <div key={index} className="p-3 neo-card-pink">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-white text-sm font-medium">{goal.name}</span>
-                  <span className="text-gray-400 text-xs">{goal.daysLeft} days left</span>
+                  <span className="neo-text-medium text-black text-sm">{goal.name}</span>
+                  <span className="text-black text-xs">{goal.daysLeft} DAYS LEFT</span>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-2">
+                <div className="w-full bg-black h-3 border-2 border-black">
                   <div 
-                    className="bg-purple-500 h-2 rounded-full transition-all duration-300" 
+                    className="bg-white h-full transition-all duration-300 border-r-2 border-black" 
                     style={{ width: `${goal.progress}%` }}
                   ></div>
                 </div>
-                <div className="text-purple-400 text-xs mt-1">{goal.progress}% complete</div>
+                <div className="neo-text-medium text-black text-xs mt-1">{goal.progress}% COMPLETE</div>
               </div>
             ))}
           </div>
         </div>
       </CardContent>
-    </Card>
+    </>
   );
 }

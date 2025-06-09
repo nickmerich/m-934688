@@ -5,9 +5,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recha
 
 export function HabitAnalytics() {
   const habitData = [
-    { name: 'Completed', value: 68, color: '#10B981' },
+    { name: 'Completed', value: 68, color: 'hsl(var(--neon-green))' },
     { name: 'Missed', value: 20, color: '#EF4444' },
-    { name: 'Partially Done', value: 12, color: '#F59E0B' }
+    { name: 'Partially Done', value: 12, color: 'hsl(var(--hot-pink))' }
   ];
 
   const topHabits = [
@@ -21,8 +21,8 @@ export function HabitAnalytics() {
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-2 shadow-lg">
-          <p className="text-white text-sm">{`${payload[0].name}: ${payload[0].value}%`}</p>
+        <div className="neo-card bg-white p-3">
+          <p className="neo-text-medium text-black">{`${payload[0].name}: ${payload[0].value}%`}</p>
         </div>
       );
     }
@@ -30,9 +30,9 @@ export function HabitAnalytics() {
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
+    <>
       <CardHeader>
-        <CardTitle className="text-white">Habit Performance</CardTitle>
+        <CardTitle className="neo-text-medium text-black">HABIT PERFORMANCE</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Pie Chart */}
@@ -46,6 +46,8 @@ export function HabitAnalytics() {
                 innerRadius={40}
                 outerRadius={80}
                 dataKey="value"
+                stroke="#000000"
+                strokeWidth={3}
               >
                 {habitData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
@@ -53,7 +55,7 @@ export function HabitAnalytics() {
               </Pie>
               <Tooltip content={<CustomTooltip />} />
               <Legend 
-                formatter={(value) => <span className="text-gray-300">{value}</span>}
+                formatter={(value) => <span className="neo-text-medium text-black">{value}</span>}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -61,20 +63,20 @@ export function HabitAnalytics() {
 
         {/* Top Performing Habits */}
         <div>
-          <h4 className="text-white font-medium mb-3">Top Performing Habits</h4>
+          <h4 className="neo-text-medium text-black mb-3">TOP PERFORMING HABITS</h4>
           <div className="space-y-2">
             {topHabits.map((habit, index) => (
-              <div key={index} className="flex items-center justify-between p-2 bg-gray-800 rounded-lg">
-                <span className="text-white text-sm">{habit.name}</span>
+              <div key={index} className="flex items-center justify-between p-3 neo-card-green">
+                <span className="neo-text-medium text-black text-sm">{habit.name}</span>
                 <div className="flex items-center space-x-2">
-                  <span className="text-green-400 text-sm">{habit.completion}%</span>
-                  <span className="text-orange-400 text-sm">{habit.streak}d</span>
+                  <span className="neo-text-medium text-black text-sm">{habit.completion}%</span>
+                  <span className="neo-text-medium text-black text-sm">{habit.streak}d</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </CardContent>
-    </Card>
+    </>
   );
 }
