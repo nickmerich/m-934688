@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,7 +13,11 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="flex h-20 items-center justify-between">
             <div className="flex items-center">
-              {/* Logo only, removed THE GRYT text */}
+              <img 
+                alt="The Gryt" 
+                src="/lovable-uploads/f846faf6-830e-4f67-828a-5af1b2a8eb01.png" 
+                className="h-12 w-auto object-contain" 
+              />
             </div>
             <Link to="/signin" className="neo-button">
               GET STARTED
@@ -33,7 +38,7 @@ const Home = () => {
               <span className="text-sm font-bold text-black">🤖 AI POWERED HABIT TRACKING</span>
             </div>
             
-            <h1 className="neo-text-huge text-black">
+            <h1 className="neo-text-massive text-black">
               BUILD HABITS
               <span className="block" style={{
                 color: 'hsl(var(--neon-green))'
@@ -132,3 +137,4 @@ const Home = () => {
 };
 
 export default Home;
+
