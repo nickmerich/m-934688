@@ -45,7 +45,7 @@ const MobileNavbar = () => {
       <div className="bg-white border-b-4 border-black">
         <div className="flex items-center justify-between px-4 py-4">
           <div className="neo-card-green inline-block">
-            <span className="neo-text-medium text-black">⚡ THE GRYT</span>
+            <span className="neo-text-medium text-black">THE GRYT</span>
           </div>
           
           <Sheet open={open} onOpenChange={setOpen}>
@@ -59,7 +59,7 @@ const MobileNavbar = () => {
                 {/* Header */}
                 <div className="px-6 py-6 border-b-4 border-black">
                   <div className="neo-card-green inline-block">
-                    <span className="neo-text-medium text-black">⚡ THE GRYT</span>
+                    <span className="neo-text-medium text-black">THE GRYT</span>
                   </div>
                 </div>
 

@@ -1,14 +1,22 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+
 export function HomeFooter() {
   const navigate = useNavigate();
-  return <footer className="bg-black border-t-4 border-white py-16">
+
+  return (
+    <footer className="bg-black border-t-4 border-white py-16">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Logo Section */}
           <div className="text-center md:text-left">
-            <img alt="The Gryt" className="h-16 w-auto object-contain mx-auto md:mx-0 mb-4" src="/lovable-uploads/7bfd3225-003d-4191-81e4-de82a32fbc17.png" />
+            <img 
+              alt="The Gryt" 
+              className="h-16 w-auto object-contain mx-auto md:mx-0 mb-4" 
+              src="/lovable-uploads/7bfd3225-003d-4191-81e4-de82a32fbc17.png" 
+            />
             <p className="neo-text-medium text-white">
               BUILDING UNBREAKABLE HABITS, ONE DAY AT A TIME.
             </p>
@@ -48,5 +56,6 @@ export function HomeFooter() {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 }

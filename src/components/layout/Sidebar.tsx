@@ -48,8 +48,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false, onToggle }) => {
         {/* Logo */}
         <div className="flex items-center flex-shrink-0 px-6 py-8 border-b-4 border-black">
           <div className="neo-card-green inline-block">
-            <span className={`neo-text-medium text-black ${isCollapsed ? 'hidden' : ''}`}>⚡ THE GRYT</span>
-            {isCollapsed && <span className="neo-text-medium text-black">⚡</span>}
+            <span className={`neo-text-medium text-black ${isCollapsed ? 'hidden' : ''}`}>THE GRYT</span>
+            {isCollapsed && <span className="neo-text-medium text-black">TG</span>}
           </div>
         </div>
 
