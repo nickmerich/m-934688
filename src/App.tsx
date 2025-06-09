@@ -15,7 +15,6 @@ import Onboarding from "./pages/Onboarding";
 import Habits from "./pages/Habits";
 import Goals from "./pages/Goals";
 import Analytics from "./pages/Analytics";
-import Community from "./pages/Community";
 import Integrations from "./pages/Integrations";
 import AIHabitPartner from "./pages/AIHabitPartner";
 import Profile from "./pages/Profile";
@@ -46,7 +45,6 @@ const App = () => (
             <Route path="/habits" element={<Habits />} />
             <Route path="/goals" element={<Goals />} />
             <Route path="/analytics" element={<Analytics />} />
-            <Route path="/community" element={<Community />} />
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/ai-habit-partner" element={<AIHabitPartner />} />
             <Route path="/profile" element={<Profile />} />

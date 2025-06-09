@@ -5,7 +5,7 @@ import {
   BarChart3, 
   Target, 
   Calendar, 
-  Users, 
+  User, 
   Trophy, 
   Puzzle,
   ChevronLeft,
@@ -24,7 +24,7 @@ const menuItems = [
   { icon: Calendar, label: 'Habits', path: '/habits' },
   { icon: Target, label: 'Goals', path: '/goals' },
   { icon: Trophy, label: 'Analytics', path: '/analytics' },
-  { icon: Users, label: 'Community', path: '/community' },
+  { icon: User, label: 'Profile', path: '/profile' },
   { icon: Puzzle, label: 'Integrations', path: '/integrations' },
 ];
 

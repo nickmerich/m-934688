@@ -1,7 +1,10 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, User, Settings, Shield, Bell } from 'lucide-react';
+import { UserStats } from '@/components/profile/UserStats';
+import { SocialSharing } from '@/components/profile/SocialSharing';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -36,16 +39,27 @@ const Profile = () => {
             </div>
             
             <h1 className="neo-text-huge text-black">
-              MANAGE YOUR
+              YOUR HABIT
               <span className="block" style={{
                 color: 'hsl(var(--neon-green))'
               }}>
-                ACCOUNT
+                JOURNEY
               </span>
             </h1>
           </div>
 
-          {/* Profile Options Grid */}
+          {/* User Stats */}
+          <div className="mb-16">
+            <h2 className="neo-text-big text-black mb-8 text-center">YOUR ACHIEVEMENTS</h2>
+            <UserStats />
+          </div>
+
+          {/* Social Sharing Section */}
+          <div className="mb-16">
+            <SocialSharing />
+          </div>
+
+          {/* Profile Management Options */}
           <div className="neo-grid">
             <div className="neo-card">
               <div className="text-center">

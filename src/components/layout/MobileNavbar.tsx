@@ -11,7 +11,7 @@ const menuItems = [
   { icon: '📅', label: 'Habits', path: '/habits' },
   { icon: '🎯', label: 'Goals', path: '/goals' },
   { icon: '📈', label: 'Analytics', path: '/analytics' },
-  { icon: '👥', label: 'Community', path: '/community' },
+  { icon: '👤', label: 'Profile', path: '/profile' },
   { icon: '🔧', label: 'Integrations', path: '/integrations' },
 ];
 
