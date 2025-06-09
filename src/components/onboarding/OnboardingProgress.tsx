@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CheckCircle, Circle } from 'lucide-react';
 
@@ -11,15 +12,22 @@ export function OnboardingProgress({ currentStep, totalSteps, steps }: Onboardin
   return (
     <div className="w-full max-w-4xl mx-auto mb-8">
       {/* Progress Bar */}
-      <div className="relative mb-6">
-        <div className="w-full bg-gray-800 rounded-full h-2">
+      <div className="relative mb-8">
+        <div className="w-full bg-white border-4 border-black h-6 neo-shadow-medium">
           <div 
-            className="bg-gradient-to-r from-green-500 to-emerald-600 h-2 rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%` }}
+            className="h-full transition-all duration-500 ease-out border-r-4 border-black"
+            style={{ 
+              width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%`,
+              background: 'hsl(var(--neon-green))'
+            }}
           />
         </div>
-        <div className="absolute top-0 right-0 text-sm text-gray-400 mt-3">
-          Step {currentStep} of {totalSteps}
+        <div className="absolute top-0 right-0 mt-8">
+          <div className="neo-card-charcoal inline-block">
+            <span className="neo-text-medium text-white">
+              STEP {currentStep} OF {totalSteps}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -31,22 +39,22 @@ export function OnboardingProgress({ currentStep, totalSteps, steps }: Onboardin
           const isCurrent = stepNumber === currentStep;
           
           return (
-            <div key={index} className="flex flex-col items-center space-y-2">
-              <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 ${
+            <div key={index} className="flex flex-col items-center space-y-3">
+              <div className={`flex items-center justify-center w-12 h-12 border-4 border-black transition-all duration-300 ${
                 isCompleted 
-                  ? 'bg-green-500 border-green-500 text-white'
+                  ? 'neo-card-green'
                   : isCurrent
-                  ? 'border-green-500 text-green-500 bg-green-500/10'
-                  : 'border-gray-600 text-gray-400'
+                  ? 'neo-card-pink'
+                  : 'neo-card'
               }`}>
                 {isCompleted ? (
-                  <CheckCircle className="h-5 w-5" />
+                  <CheckCircle className="h-6 w-6 text-black" strokeWidth={3} />
                 ) : (
-                  <Circle className="h-5 w-5" />
+                  <Circle className="h-6 w-6 text-black" strokeWidth={3} />
                 )}
               </div>
-              <span className={`text-xs text-center max-w-20 ${
-                isCurrent ? 'text-green-400' : isCompleted ? 'text-green-300' : 'text-gray-500'
+              <span className={`text-sm text-center max-w-20 font-black uppercase ${
+                isCurrent ? 'text-black' : isCompleted ? 'text-black' : 'text-gray-500'
               }`}>
                 {step}
               </span>
