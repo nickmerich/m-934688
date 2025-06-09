@@ -35,8 +35,8 @@ const NotFound = () => {
             <div className="flex items-center">
               <img 
                 alt="The Gryt" 
-                src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" 
-                className="h-12 w-auto object-cover" 
+                src="/lovable-uploads/f846faf6-830e-4f67-828a-5af1b2a8eb01.png" 
+                className="h-12 w-auto object-contain" 
               />
             </div>
           </div>

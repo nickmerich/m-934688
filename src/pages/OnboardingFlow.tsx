@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -70,9 +71,9 @@ const OnboardingFlow = () => {
             <div className="flex justify-center">
               <div className="neo-card-green inline-block p-6">
                 <img 
-                  src="/lovable-uploads/b4bc62c0-02e4-4cf2-ade9-561284c211a2.png" 
+                  src="/lovable-uploads/f846faf6-830e-4f67-828a-5af1b2a8eb01.png" 
                   alt="The Gryt" 
-                  className="h-16 w-16 mx-auto object-fill" 
+                  className="h-16 w-16 mx-auto object-contain" 
                 />
               </div>
             </div>

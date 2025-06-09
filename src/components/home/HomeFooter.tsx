@@ -15,7 +15,7 @@ export function HomeFooter() {
             <img 
               alt="The Gryt" 
               className="h-16 w-auto object-contain mx-auto md:mx-0 mb-4" 
-              src="/lovable-uploads/7bfd3225-003d-4191-81e4-de82a32fbc17.png" 
+              src="/lovable-uploads/0445d687-d58f-448a-b8db-f47cb2b21b5d.png" 
             />
             <p className="neo-text-medium text-white">
               BUILDING UNBREAKABLE HABITS, ONE DAY AT A TIME.
