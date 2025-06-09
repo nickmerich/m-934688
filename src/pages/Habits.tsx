@@ -1,11 +1,38 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, BookOpen, Target, Trophy } from 'lucide-react';
+import { HabitGoalIntegration } from '@/components/habits/HabitGoalIntegration';
 
 const Habits = () => {
   const navigate = useNavigate();
   const [showResources, setShowResources] = React.useState(false);
+
+  // Mock goals data for integration
+  const mockGoals = [
+    {
+      id: '1',
+      title: 'Lose 10 pounds',
+      category: 'Health',
+      progress: 6,
+      target: 10,
+      unit: 'pounds'
+    },
+    {
+      id: '2',
+      title: 'Exercise 100 hours',
+      category: 'Fitness',
+      progress: 45,
+      target: 100,
+      unit: 'hours'
+    }
+  ];
+
+  const handleLinkHabitToGoal = (goalId: string, habitName: string) => {
+    console.log(`Linking habit ${habitName} to goal ${goalId}`);
+    // Implementation for linking habits to goals
+  };
 
   return (
     <div className="min-h-screen bg-white no-gradients">
@@ -180,6 +207,12 @@ const Habits = () => {
                 </div>
               </div>
 
+              {/* Goal Integration */}
+              <HabitGoalIntegration 
+                goals={mockGoals}
+                onLinkHabitToGoal={handleLinkHabitToGoal}
+              />
+
               {/* Today's Habits */}
               <div className="max-w-4xl mx-auto">
                 <div className="flex items-center justify-between mb-8">
@@ -211,7 +244,7 @@ const Habits = () => {
                         <div className="w-8 h-8 border-4 border-black rounded-full"></div>
                         <div>
                           <h3 className="neo-text-medium text-black">WORKOUT SESSION</h3>
-                          <p className="neo-text-medium text-black opacity-70">5 DAYS STREAK • FITNESS • +30 WINS</p>
+                          <p className="neo-text-medium text-black opacity-70">5 DAYS STREAK • FITNESS • +30 WINS • LINKED TO: LOSE 10 POUNDS</p>
                         </div>
                       </div>
                       <span className="neo-text-medium text-black px-4 py-2 bg-red-500 text-white rounded">HARD</span>

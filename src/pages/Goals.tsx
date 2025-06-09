@@ -1,7 +1,10 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Target, Trophy, Calendar, Flag } from 'lucide-react';
+import { AddGoalModal } from '@/components/goals/AddGoalModal';
+import { GoalDetailView } from '@/components/goals/GoalDetailView';
 
 interface Goal {
   id: string;
@@ -66,6 +69,7 @@ const Goals = () => {
   const navigate = useNavigate();
   const [goals, setGoals] = useState(mockGoals);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedGoal, setSelectedGoal] = useState<Goal | null>(null);
 
   // Filter goals by category
   const filteredGoals = selectedCategory 
@@ -91,6 +95,68 @@ const Goals = () => {
     }
   };
 
+  const handleAddGoal = (newGoal: Omit<Goal, 'id' | 'progress'>) => {
+    const goal: Goal = {
+      ...newGoal,
+      id: Date.now().toString(),
+      progress: 0,
+    };
+    setGoals([...goals, goal]);
+  };
+
+  const handleUpdateProgress = (goalId: string, newProgress: number) => {
+    setGoals(goals.map(goal => 
+      goal.id === goalId ? { ...goal, progress: newProgress } : goal
+    ));
+    
+    // Update selectedGoal if it's currently being viewed
+    if (selectedGoal && selectedGoal.id === goalId) {
+      setSelectedGoal({ ...selectedGoal, progress: newProgress });
+    }
+  };
+
+  const handleGoalClick = (goal: Goal) => {
+    setSelectedGoal(goal);
+  };
+
+  const handleBackToGoals = () => {
+    setSelectedGoal(null);
+  };
+
+  // If a goal is selected, show the detail view
+  if (selectedGoal) {
+    return (
+      <div className="min-h-screen bg-white no-gradients">
+        {/* Navigation */}
+        <nav className="bg-white border-b-4 border-black">
+          <div className="max-w-7xl mx-auto px-4 lg:px-6">
+            <div className="flex h-20 items-center justify-between">
+              {/* Empty left section */}
+              <div></div>
+
+              {/* Empty middle section */}
+              <div></div>
+
+              {/* Empty right section */}
+              <div></div>
+            </div>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <section className="bg-white py-20 lg:py-32 no-gradients">
+          <div className="max-w-7xl mx-auto px-4 lg:px-6">
+            <GoalDetailView
+              goal={selectedGoal}
+              onBack={handleBackToGoals}
+              onUpdateProgress={handleUpdateProgress}
+            />
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white no-gradients">
       {/* Navigation */}
@@ -110,9 +176,7 @@ const Goals = () => {
             <div></div>
 
             {/* Add Goal Button */}
-            <Button className="neo-button-primary">
-              + ADD GOAL
-            </Button>
+            <AddGoalModal onAddGoal={handleAddGoal} />
           </div>
         </div>
       </nav>
@@ -219,9 +283,7 @@ const Goals = () => {
                   : 'START BY CREATING YOUR FIRST GOAL TO TRACK YOUR PROGRESS.'
                 }
               </p>
-              <Button className="neo-button-primary">
-                + ADD YOUR FIRST GOAL
-              </Button>
+              <AddGoalModal onAddGoal={handleAddGoal} />
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -230,7 +292,11 @@ const Goals = () => {
                 const isCompleted = goal.progress >= goal.target;
                 
                 return (
-                  <div key={goal.id} className={isCompleted ? 'neo-card-green' : 'neo-card'}>
+                  <div 
+                    key={goal.id} 
+                    className={`${isCompleted ? 'neo-card-green' : 'neo-card'} cursor-pointer hover:transform hover:translate-x-1 hover:translate-y-1 transition-transform`}
+                    onClick={() => handleGoalClick(goal)}
+                  >
                     <div className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <h3 className="neo-text-big text-black">{goal.title}</h3>
@@ -252,7 +318,7 @@ const Goals = () => {
                         
                         <div className="w-full bg-black h-4 border-2 border-black">
                           <div 
-                            className="h-full bg-green-500 transition-all duration-300"
+                            className="h-full bg-white transition-all duration-300"
                             style={{ width: `${Math.min(progressPercentage, 100)}%` }}
                           ></div>
                         </div>
@@ -261,15 +327,6 @@ const Goals = () => {
                           <span className="neo-text-medium text-black">DEADLINE: {goal.deadline}</span>
                           <span className="neo-text-medium text-black">{Math.round(progressPercentage)}%</span>
                         </div>
-                      </div>
-                      
-                      <div className="flex space-x-4 mt-6">
-                        <Button className="neo-button flex-1">
-                          UPDATE PROGRESS
-                        </Button>
-                        <Button className="neo-button-accent">
-                          EDIT
-                        </Button>
                       </div>
                     </div>
                   </div>

@@ -136,37 +136,36 @@ export function AddGoalModal({ onAddGoal }: AddGoalModalProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" className="bg-green-500 hover:bg-green-600 text-white">
-          <Plus className="h-4 w-4 mr-2" />
-          Add Goal
+        <Button className="neo-button-primary">
+          + ADD GOAL
         </Button>
       </DialogTrigger>
-      <DialogContent className="bg-gray-900 border-gray-800 text-white max-w-lg">
+      <DialogContent className="neo-card max-w-lg">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-white flex items-center">
-            <Target className="h-5 w-5 mr-2 text-green-500" />
-            Create New Goal
+          <DialogTitle className="neo-text-big text-black flex items-center">
+            <Target className="h-5 w-5 mr-2" strokeWidth={3} />
+            CREATE NEW GOAL
           </DialogTitle>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="goal-title" className="text-gray-300">
-              Goal Title *
+            <Label htmlFor="goal-title" className="neo-text-medium text-black">
+              GOAL TITLE *
             </Label>
             <Input
               id="goal-title"
               placeholder="e.g., Lose 10 pounds"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
+              className="neo-border bg-white text-black placeholder:text-black/60"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="target" className="text-gray-300">
-                Target Value *
+              <Label htmlFor="target" className="neo-text-medium text-black">
+                TARGET VALUE *
               </Label>
               <Input
                 id="target"
@@ -174,21 +173,21 @@ export function AddGoalModal({ onAddGoal }: AddGoalModalProps) {
                 placeholder="10"
                 value={formData.target}
                 onChange={(e) => setFormData({ ...formData, target: e.target.value })}
-                className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
+                className="neo-border bg-white text-black placeholder:text-black/60"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="unit" className="text-gray-300">
-                Unit
+              <Label htmlFor="unit" className="neo-text-medium text-black">
+                UNIT
               </Label>
               <Select value={formData.unit} onValueChange={(value) => setFormData({ ...formData, unit: value })}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="neo-border bg-white text-black">
                   <SelectValue placeholder="Select unit" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
+                <SelectContent className="neo-card">
                   {units.map((unit) => (
-                    <SelectItem key={unit} value={unit} className="text-white hover:bg-gray-700">
-                      {unit}
+                    <SelectItem key={unit} value={unit} className="neo-text-medium text-black hover:bg-gray-100">
+                      {unit.toUpperCase()}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -197,61 +196,61 @@ export function AddGoalModal({ onAddGoal }: AddGoalModalProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="deadline" className="text-gray-300">
-              Deadline *
+            <Label htmlFor="deadline" className="neo-text-medium text-black">
+              DEADLINE *
             </Label>
             <Input
               id="deadline"
               type="date"
               value={formData.deadline}
               onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-              className="bg-gray-800 border-gray-700 text-white"
+              className="neo-border bg-white text-black"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="category" className="text-gray-300">
-                Category *
+              <Label htmlFor="category" className="neo-text-medium text-black">
+                CATEGORY *
               </Label>
               <Select value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="neo-border bg-white text-black">
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
+                <SelectContent className="neo-card">
                   {categories.map((category) => (
-                    <SelectItem key={category} value={category} className="text-white hover:bg-gray-700">
-                      {category}
+                    <SelectItem key={category} value={category} className="neo-text-medium text-black hover:bg-gray-100">
+                      {category.toUpperCase()}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="priority" className="text-gray-300">
-                Priority *
+              <Label htmlFor="priority" className="neo-text-medium text-black">
+                PRIORITY *
               </Label>
               <Select value={formData.priority} onValueChange={(value: 'Low' | 'Medium' | 'High') => setFormData({ ...formData, priority: value })}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="neo-border bg-white text-black">
                   <SelectValue placeholder="Select priority" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="Low" className="text-white hover:bg-gray-700">
+                <SelectContent className="neo-card">
+                  <SelectItem value="Low" className="neo-text-medium text-black hover:bg-gray-100">
                     <div className="flex items-center">
                       <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Low
+                      LOW
                     </div>
                   </SelectItem>
-                  <SelectItem value="Medium" className="text-white hover:bg-gray-700">
+                  <SelectItem value="Medium" className="neo-text-medium text-black hover:bg-gray-100">
                     <div className="flex items-center">
                       <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
-                      Medium
+                      MEDIUM
                     </div>
                   </SelectItem>
-                  <SelectItem value="High" className="text-white hover:bg-gray-700">
+                  <SelectItem value="High" className="neo-text-medium text-black hover:bg-gray-100">
                     <div className="flex items-center">
                       <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-                      High
+                      HIGH
                     </div>
                   </SelectItem>
                 </SelectContent>
@@ -260,32 +259,31 @@ export function AddGoalModal({ onAddGoal }: AddGoalModalProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description" className="text-gray-300">
-              Description (Optional)
+            <Label htmlFor="description" className="neo-text-medium text-black">
+              DESCRIPTION (OPTIONAL)
             </Label>
             <Textarea
               id="description"
               placeholder="Describe your goal and what success looks like..."
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 min-h-[80px]"
+              className="neo-border bg-white text-black placeholder:text-black/60 min-h-[80px]"
             />
           </div>
 
           <div className="flex space-x-3 pt-4">
             <Button
               type="button"
-              variant="outline"
               onClick={() => setOpen(false)}
-              className="flex-1 border-gray-700 text-gray-300 hover:bg-gray-800"
+              className="neo-button flex-1"
             >
-              Cancel
+              CANCEL
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+              className="neo-button-primary flex-1"
             >
-              Create Goal
+              CREATE GOAL
             </Button>
           </div>
         </form>
