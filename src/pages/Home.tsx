@@ -28,12 +28,12 @@ const Home = () => {
       <section className="bg-white py-20 lg:py-32 no-gradients">
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="text-center space-y-12 mb-16">
-            {/* Green badge instead of pink */}
+            {/* Green badge with updated text */}
             <div className="inline-block bg-green-500 border-4 border-black px-3 py-1" style={{
               background: 'hsl(var(--neon-green))',
               boxShadow: '4px 4px 0px #000000'
             }}>
-              <span className="text-sm font-bold text-black">🤖 AI POWERED HABIT TRACKING</span>
+              <span className="text-sm font-bold text-black">🌱 PERSONAL GROWTH ACCELERATOR</span>
             </div>
             
             <h1 className="neo-text-massive text-black">
