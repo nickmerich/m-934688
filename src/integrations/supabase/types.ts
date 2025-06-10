@@ -163,6 +163,41 @@ export type Database = {
         }
         Relationships: []
       }
+      habit_completions: {
+        Row: {
+          completed_at: string
+          completion_date: string
+          habit_id: string
+          id: string
+          notes: string | null
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          completion_date?: string
+          habit_id: string
+          id?: string
+          notes?: string | null
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          completion_date?: string
+          habit_id?: string
+          id?: string
+          notes?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "habit_completions_habit_id_fkey"
+            columns: ["habit_id"]
+            isOneToOne: false
+            referencedRelation: "habits"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       habit_stacks: {
         Row: {
           anchor_routine: string
@@ -206,6 +241,84 @@ export type Database = {
             columns: ["new_goal_id"]
             isOneToOne: false
             referencedRelation: "goals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      habits: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          difficulty: string
+          frequency: string
+          frequency_data: Json | null
+          goal_id: string | null
+          id: string
+          is_active: boolean | null
+          linked_habit_id: string | null
+          name: string
+          reminder_enabled: boolean | null
+          reminder_time: string | null
+          reward_points: number
+          scheduled_days: number[] | null
+          scheduled_time: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          difficulty: string
+          frequency?: string
+          frequency_data?: Json | null
+          goal_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          linked_habit_id?: string | null
+          name: string
+          reminder_enabled?: boolean | null
+          reminder_time?: string | null
+          reward_points?: number
+          scheduled_days?: number[] | null
+          scheduled_time?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          difficulty?: string
+          frequency?: string
+          frequency_data?: Json | null
+          goal_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          linked_habit_id?: string | null
+          name?: string
+          reminder_enabled?: boolean | null
+          reminder_time?: string | null
+          reward_points?: number
+          scheduled_days?: number[] | null
+          scheduled_time?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "habits_goal_id_fkey"
+            columns: ["goal_id"]
+            isOneToOne: false
+            referencedRelation: "goals"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "habits_linked_habit_id_fkey"
+            columns: ["linked_habit_id"]
+            isOneToOne: false
+            referencedRelation: "habits"
             referencedColumns: ["id"]
           },
         ]

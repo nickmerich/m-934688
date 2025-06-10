@@ -1,45 +1,33 @@
 
 @layer base {
+  /* Neo-Brutalist Typography */
   .neo-text-massive {
-    @apply text-4xl md:text-6xl lg:text-8xl font-black uppercase leading-none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
+    @apply text-5xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   .neo-text-huge {
-    @apply text-2xl md:text-4xl lg:text-5xl font-black uppercase leading-tight;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
+    @apply text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   .neo-text-big {
-    @apply text-xl md:text-2xl lg:text-3xl font-black uppercase;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
+    @apply text-2xl md:text-3xl font-black leading-tight tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   .neo-text-medium {
-    @apply text-lg md:text-xl font-bold uppercase;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
+    @apply text-lg md:text-xl font-bold leading-relaxed;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
-  /* Typography overrides */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
+  .neo-text-small {
+    @apply text-base font-bold;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
-  p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
-
-  /* Button overrides */
-  button {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
+  .neo-text-xs {
+    @apply text-sm font-bold;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }

@@ -217,7 +217,10 @@ const Habits = () => {
               <div className="max-w-4xl mx-auto">
                 <div className="flex items-center justify-between mb-8">
                   <h2 className="neo-text-big text-black">TODAY'S HABITS</h2>
-                  <Button className="neo-button-primary">
+                  <Button 
+                    onClick={() => navigate('/habits/new')}
+                    className="neo-button-primary"
+                  >
                     + ADD HABIT
                   </Button>
                 </div>

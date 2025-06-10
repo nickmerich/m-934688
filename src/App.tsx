@@ -14,6 +14,7 @@ import OnboardingFlow from "./pages/OnboardingFlow";
 import Dashboard from "./pages/Dashboard";
 import Onboarding from "./pages/Onboarding";
 import Habits from "./pages/Habits";
+import HabitsForm from "./pages/HabitsForm";
 import Goals from "./pages/Goals";
 import Analytics from "./pages/Analytics";
 import Integrations from "./pages/Integrations";
@@ -70,6 +71,11 @@ const App = () => (
               <Route path="/habits" element={
                 <AuthGuard>
                   <Habits />
+                </AuthGuard>
+              } />
+              <Route path="/habits/new" element={
+                <AuthGuard>
+                  <HabitsForm />
                 </AuthGuard>
               } />
               <Route path="/goals" element={

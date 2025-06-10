@@ -69,6 +69,12 @@
     box-shadow: 8px 8px 0px #000000;
   }
 
+  .neo-card-pink {
+    background: #FF69B4;
+    @apply border-4 border-black p-6 text-black;
+    box-shadow: 8px 8px 0px #000000;
+  }
+
   .neo-shadow-harsh {
     box-shadow: 8px 8px 0px #000000;
   }
