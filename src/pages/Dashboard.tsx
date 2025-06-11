@@ -25,43 +25,77 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-white no-gradients">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Welcome to Your GRYT Command Center</h1>
-          <p className="text-gray-400">Build yourself. Do the thing. Your AI-powered growth ecosystem.</p>
+        <div className="mb-8 text-center">
+          <div className="inline-block bg-green-500 border-4 border-black px-3 py-1 mb-4" style={{
+            background: 'hsl(var(--neon-green))',
+            boxShadow: '4px 4px 0px #000000'
+          }}>
+            <span className="text-sm font-bold text-black">🚀 COMMAND CENTER</span>
+          </div>
+          <h1 className="neo-text-massive text-black mb-2">
+            GRYT
+            <span className="block" style={{
+              color: 'hsl(var(--neon-green))'
+            }}>
+              DASHBOARD
+            </span>
+          </h1>
+          <p className="neo-text-big text-black">BUILD YOURSELF. DO THE THING.</p>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 bg-gray-900">
-            <TabsTrigger value="overview" className="flex items-center gap-2">
+          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 bg-white border-4 border-black neo-shadow-harsh">
+            <TabsTrigger 
+              value="overview" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <TrendingUp className="h-4 w-4" />
-              {!isMobile && "Overview"}
+              {!isMobile && "OVERVIEW"}
             </TabsTrigger>
-            <TabsTrigger value="ai-insights" className="flex items-center gap-2">
+            <TabsTrigger 
+              value="ai-insights" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <Brain className="h-4 w-4" />
-              {!isMobile && "AI Insights"}
+              {!isMobile && "AI INSIGHTS"}
             </TabsTrigger>
-            <TabsTrigger value="goal-architect" className="flex items-center gap-2">
+            <TabsTrigger 
+              value="goal-architect" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <Target className="h-4 w-4" />
-              {!isMobile && "Goal Architect"}
+              {!isMobile && "GOAL ARCHITECT"}
             </TabsTrigger>
-            <TabsTrigger value="mindgym" className="flex items-center gap-2">
+            <TabsTrigger 
+              value="mindgym" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <Zap className="h-4 w-4" />
-              {!isMobile && "MindGym"}
+              {!isMobile && "MINDGYM"}
             </TabsTrigger>
-            <TabsTrigger value="habits" className="flex items-center gap-2">
+            <TabsTrigger 
+              value="habits" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <Dumbbell className="h-4 w-4" />
-              {!isMobile && "Habits"}
+              {!isMobile && "HABITS"}
             </TabsTrigger>
-            <TabsTrigger value="goals" className="flex items-center gap-2">
+            <TabsTrigger 
+              value="goals" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <Target className="h-4 w-4" />
-              {!isMobile && "Goals"}
+              {!isMobile && "GOALS"}
             </TabsTrigger>
-            <TabsTrigger value="settings" className="flex items-center gap-2">
+            <TabsTrigger 
+              value="settings" 
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+            >
               <Settings className="h-4 w-4" />
-              {!isMobile && "Settings"}
+              {!isMobile && "SETTINGS"}
             </TabsTrigger>
           </TabsList>
 

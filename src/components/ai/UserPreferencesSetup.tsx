@@ -139,34 +139,45 @@ export function UserPreferencesSetup() {
   ];
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-green-500">
-          <Settings className="h-5 w-5" />
-          AI Coaching Preferences
-          {hasExistingPrefs && <Badge variant="outline">Configured</Badge>}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
+    <div className="neo-card">
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-black border-4 border-black">
+            <Settings className="h-6 w-6 text-white" />
+          </div>
+          <div>
+            <h2 className="neo-text-big text-black">AI COACHING PREFERENCES</h2>
+            {hasExistingPrefs && (
+              <div className="inline-block bg-green-500 border-2 border-black px-2 py-1 mt-1" style={{
+                background: 'hsl(var(--neon-green))'
+              }}>
+                <span className="text-xs font-bold text-black">CONFIGURED</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-8">
         {/* AI Persona Selection */}
         <div>
-          <Label className="text-white mb-3 block">
-            <Brain className="h-4 w-4 inline mr-2" />
-            Choose Your AI Coach Persona
-          </Label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-center gap-2 mb-4">
+            <Brain className="h-5 w-5 text-black" />
+            <h3 className="neo-text-medium text-black">CHOOSE YOUR AI COACH PERSONA</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {personas.map((persona) => (
               <button
                 key={persona.value}
                 onClick={() => setPreferences(prev => ({ ...prev, ai_coach_persona: persona.value }))}
-                className={`p-3 rounded-lg border text-left transition-colors ${
+                className={`p-4 text-left transition-all ${
                   preferences.ai_coach_persona === persona.value
-                    ? 'border-green-500 bg-green-500/10 text-green-400'
-                    : 'border-gray-700 bg-gray-800 text-gray-300 hover:border-gray-600'
+                    ? 'neo-card-green'
+                    : 'neo-card hover:transform hover:translate-x-1 hover:translate-y-1'
                 }`}
               >
-                <div className="font-medium">{persona.label}</div>
-                <div className="text-xs opacity-70">{persona.description}</div>
+                <div className="neo-text-medium text-black mb-1">{persona.label}</div>
+                <div className="text-sm text-black">{persona.description}</div>
               </button>
             ))}
           </div>
@@ -174,66 +185,58 @@ export function UserPreferencesSetup() {
 
         {/* Coaching Style */}
         <div>
-          <Label className="text-white mb-3 block">
-            <User className="h-4 w-4 inline mr-2" />
-            Coaching Style
-          </Label>
-          <Select 
-            value={preferences.coaching_style} 
-            onValueChange={(value) => setPreferences(prev => ({ ...prev, coaching_style: value }))}
-          >
-            <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
+          <div className="flex items-center gap-2 mb-4">
+            <User className="h-5 w-5 text-black" />
+            <h3 className="neo-text-medium text-black">COACHING STYLE</h3>
+          </div>
+          <div className="neo-card bg-white">
+            <select 
+              value={preferences.coaching_style} 
+              onChange={(e) => setPreferences(prev => ({ ...prev, coaching_style: e.target.value }))}
+              className="w-full p-3 border-4 border-black bg-white neo-text-medium text-black"
+            >
               {coachingStyles.map((style) => (
-                <SelectItem key={style.value} value={style.value}>
-                  <div>
-                    <div className="font-medium">{style.label}</div>
-                    <div className="text-xs text-gray-400">{style.description}</div>
-                  </div>
-                </SelectItem>
+                <option key={style.value} value={style.value}>
+                  {style.label} - {style.description}
+                </option>
               ))}
-            </SelectContent>
-          </Select>
+            </select>
+          </div>
         </div>
 
         {/* Notification Preferences */}
         <div>
-          <Label className="text-white mb-3 block">
-            <Bell className="h-4 w-4 inline mr-2" />
-            Notification Preferences
-          </Label>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 mb-4">
+            <Bell className="h-5 w-5 text-black" />
+            <h3 className="neo-text-medium text-black">NOTIFICATION PREFERENCES</h3>
+          </div>
+          <div className="space-y-4">
+            <div className="neo-card flex items-center justify-between p-4">
               <div>
-                <Label htmlFor="daily-nudges" className="text-white">Daily Nudges</Label>
-                <p className="text-xs text-gray-400">Get daily motivation from your AI coach</p>
+                <div className="neo-text-medium text-black">DAILY NUDGES</div>
+                <div className="text-sm text-black">Get daily motivation from your AI coach</div>
               </div>
               <Switch
-                id="daily-nudges"
                 checked={preferences.notification_preferences.daily_nudges}
                 onCheckedChange={(checked) => updateNotificationPreference('daily_nudges', checked)}
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="neo-card flex items-center justify-between p-4">
               <div>
-                <Label htmlFor="mood-checkins" className="text-white">Mood Check-ins</Label>
-                <p className="text-xs text-gray-400">Reminders to log your emotional state</p>
+                <div className="neo-text-medium text-black">MOOD CHECK-INS</div>
+                <div className="text-sm text-black">Reminders to log your emotional state</div>
               </div>
               <Switch
-                id="mood-checkins"
                 checked={preferences.notification_preferences.mood_checkins}
                 onCheckedChange={(checked) => updateNotificationPreference('mood_checkins', checked)}
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="neo-card flex items-center justify-between p-4">
               <div>
-                <Label htmlFor="goal-reminders" className="text-white">Goal Reminders</Label>
-                <p className="text-xs text-gray-400">Get reminded about your goals and habits</p>
+                <div className="neo-text-medium text-black">GOAL REMINDERS</div>
+                <div className="text-sm text-black">Get reminded about your goals and habits</div>
               </div>
               <Switch
-                id="goal-reminders"
                 checked={preferences.notification_preferences.goal_reminders}
                 onCheckedChange={(checked) => updateNotificationPreference('goal_reminders', checked)}
               />
@@ -244,11 +247,11 @@ export function UserPreferencesSetup() {
         <Button
           onClick={savePreferences}
           disabled={loading}
-          className="w-full bg-green-600 hover:bg-green-700"
+          className="neo-button-primary w-full text-xl py-4"
         >
-          {loading ? 'Saving...' : 'Save Preferences'}
+          {loading ? 'SAVING...' : 'SAVE PREFERENCES'}
         </Button>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -69,29 +69,38 @@ export function HabitTracker() {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'Easy': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'Medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'Hard': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      case 'Easy': return 'neo-card-green';
+      case 'Medium': return 'neo-card-grey';
+      case 'Hard': return 'neo-card-charcoal';
+      default: return 'neo-card';
     }
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-white text-lg sm:text-xl">Today's Habits</CardTitle>
+    <div className="neo-card">
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="neo-text-big text-black">TODAY'S HABITS</h2>
           <AddHabitModal onAddHabit={addNewHabit} />
         </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Progress: {completedToday}/{totalHabits}</span>
-            <span className="text-green-400 font-medium">{Math.round(completionRate)}%</span>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="neo-text-medium text-black">PROGRESS: {completedToday}/{totalHabits}</span>
+            <span className="neo-text-medium" style={{ color: 'hsl(var(--neon-green))' }}>{Math.round(completionRate)}%</span>
           </div>
-          <Progress value={completionRate} className="h-2" />
+          <div className="w-full bg-black h-4 border-4 border-black">
+            <div 
+              className="h-full transition-all duration-300 border-r-4 border-black" 
+              style={{ 
+                width: `${completionRate}%`,
+                background: 'hsl(var(--neon-green))'
+              }}
+            ></div>
+          </div>
         </div>
-      </CardHeader>
-      <CardContent className="space-y-3">
+      </div>
+
+      <div className="space-y-4">
         {isMobile ? (
           // Mobile layout - simplified cards
           habits.map((habit) => (
@@ -102,56 +111,54 @@ export function HabitTracker() {
             />
           ))
         ) : (
-          // Desktop layout - original design
+          // Desktop layout - neo-brutalist design
           habits.map((habit) => (
             <div
               key={habit.id}
-              className={`flex items-center p-4 rounded-lg border transition-all ${
+              className={`flex items-center p-4 transition-all ${
                 habit.completed 
-                  ? 'bg-green-500/10 border-green-500/30' 
-                  : 'bg-gray-800 border-gray-700 hover:border-gray-600'
+                  ? 'neo-card-green' 
+                  : 'neo-card hover:transform hover:translate-x-1 hover:translate-y-1'
               }`}
             >
               <Button
-                variant="ghost"
-                size="icon"
                 onClick={() => toggleHabit(habit.id)}
-                className={`mr-3 rounded-full ${
+                className={`mr-4 w-12 h-12 rounded-full border-4 border-black ${
                   habit.completed 
-                    ? 'bg-green-500 hover:bg-green-600 text-white' 
-                    : 'border-2 border-gray-600 hover:border-green-500'
+                    ? 'bg-black text-white' 
+                    : 'bg-white text-black hover:bg-black hover:text-white'
                 }`}
               >
-                {habit.completed && <Check className="h-4 w-4" />}
+                {habit.completed && <Check className="h-6 w-6" />}
               </Button>
 
               <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-1">
-                  <span className={`font-medium ${habit.completed ? 'text-green-400' : 'text-white'}`}>
+                <div className="flex items-center space-x-3 mb-2">
+                  <span className={`neo-text-medium ${habit.completed ? 'text-black' : 'text-black'}`}>
                     {habit.name}
                   </span>
-                  <Badge variant="outline" className={getDifficultyColor(habit.difficulty)}>
-                    {habit.difficulty}
-                  </Badge>
+                  <div className={`inline-block px-2 py-1 border-2 border-black ${getDifficultyColor(habit.difficulty)}`}>
+                    <span className="text-xs font-bold text-black">{habit.difficulty}</span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-4 text-sm text-gray-400">
+                <div className="flex items-center space-x-6 text-sm text-black">
                   <div className="flex items-center">
-                    <Flame className="h-3 w-3 mr-1 text-orange-500" />
-                    {habit.streak} days
+                    <Flame className="h-4 w-4 mr-1" style={{ color: '#FF6B35' }} />
+                    <span className="font-bold">{habit.streak} DAYS</span>
                   </div>
                   <div className="flex items-center">
-                    <Clock className="h-3 w-3 mr-1" />
-                    {habit.category}
+                    <Clock className="h-4 w-4 mr-1" />
+                    <span className="font-bold">{habit.category}</span>
                   </div>
-                  <div className="text-green-400 font-medium">
-                    +{habit.winsReward} Wins
+                  <div className="font-bold" style={{ color: 'hsl(var(--neon-green))' }}>
+                    +{habit.winsReward} WINS
                   </div>
                 </div>
               </div>
             </div>
           ))
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
