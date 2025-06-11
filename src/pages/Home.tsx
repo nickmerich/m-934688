@@ -33,7 +33,7 @@ const Home = () => {
               background: 'hsl(var(--neon-green))',
               boxShadow: '4px 4px 0px #000000'
             }}>
-              <span className="text-sm font-bold text-black">🌱 PERSONAL GROWTH ACCELERATOR</span>
+              <span className="text-sm font-bold text-black">Your Growth Operating System</span>
             </div>
             
             <h1 className="neo-text-massive text-black">
