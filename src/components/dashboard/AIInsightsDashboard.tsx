@@ -160,24 +160,6 @@ export function AIInsightsDashboard() {
 
   return (
     <div className="space-y-6">
-      {/* AI Insights Header */}
-      <div className="neo-card">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Brain className="h-6 w-6 text-black" />
-            <h2 className="neo-text-big text-black">AI COMMAND CENTER</h2>
-          </div>
-          <div className="inline-block px-3 py-1 border-2 border-black" style={{
-            background: 'hsl(var(--neon-green))',
-            boxShadow: '2px 2px 0px #000000'
-          }}>
-            <span className="text-sm font-bold text-black">
-              {insights.filter(i => !i.is_viewed).length} NEW INSIGHTS
-            </span>
-          </div>
-        </div>
-      </div>
-
       {/* High Priority Alerts */}
       {insights.filter(i => i.priority === 'urgent' || i.priority === 'high').length > 0 && (
         <div className="neo-card">
