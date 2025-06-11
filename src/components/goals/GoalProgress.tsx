@@ -88,7 +88,7 @@ export function GoalProgress() {
                   <div className="flex items-center space-x-3 mb-2">
                     <h4 className="neo-text-medium text-black">{goal.title}</h4>
                     <div className={`px-3 py-1 text-xs font-bold uppercase ${getPriorityColor(goal.priority)}`}>
-                      {priority}
+                      {goal.priority}
                     </div>
                   </div>
                   <p className="neo-text-small text-black opacity-70 mb-4">{goal.description}</p>
