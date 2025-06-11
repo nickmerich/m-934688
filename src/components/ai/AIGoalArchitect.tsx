@@ -94,133 +94,150 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gray-900 border-gray-800">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-green-500">
-            <Target className="h-5 w-5" />
-            AI Goal Architect
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <div className="neo-card">
+        <div className="flex items-center gap-2 mb-6">
+          <Target className="h-6 w-6 text-black" />
+          <h2 className="neo-text-big text-black">AI GOAL ARCHITECT</h2>
+        </div>
+        
+        <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              What do you want to achieve? (Be as vague as you want!)
+            <label className="block neo-text-small text-black mb-3">
+              WHAT DO YOU WANT TO ACHIEVE? (BE AS VAGUE AS YOU WANT!)
             </label>
             <Textarea
               placeholder="e.g., 'get in shape', 'learn something new', 'be more productive'..."
               value={vagueGoal}
               onChange={(e) => setVagueGoal(e.target.value)}
-              className="bg-gray-800 border-gray-700 text-white"
+              className="neo-border bg-white text-black placeholder:text-gray-500 focus:outline-none focus:ring-0 rounded-none"
               rows={3}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              Choose Your Persona
+            <label className="block neo-text-small text-black mb-3">
+              CHOOSE YOUR PERSONA
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3">
               {personas.map((persona) => (
                 <button
                   key={persona.id}
                   onClick={() => setSelectedPersona(persona.id)}
-                  className={`p-3 rounded-lg border text-left transition-colors ${
+                  className={`p-4 border-4 border-black text-left transition-all ${
                     selectedPersona === persona.id
-                      ? 'border-green-500 bg-green-500/10 text-green-400'
-                      : 'border-gray-700 bg-gray-800 text-gray-300 hover:border-gray-600'
+                      ? 'neo-card-green'
+                      : 'neo-card hover:transform hover:translate-x-1 hover:translate-y-1'
                   }`}
+                  style={{
+                    boxShadow: selectedPersona === persona.id 
+                      ? '4px 4px 0px #000000' 
+                      : '2px 2px 0px #000000'
+                  }}
                 >
-                  <div className="font-medium">{persona.label}</div>
-                  <div className="text-xs opacity-70">{persona.description}</div>
+                  <div className="neo-text-small text-black">{persona.label}</div>
+                  <div className="text-sm text-black mt-1">{persona.description}</div>
                 </button>
               ))}
             </div>
           </div>
 
-          <Button
+          <button
             onClick={processGoalWithAI}
             disabled={!vagueGoal.trim() || isProcessing}
-            className="w-full bg-green-600 hover:bg-green-700"
+            className="neo-button-primary w-full flex items-center justify-center gap-2"
           >
             {isProcessing ? (
               <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Processing with AI...
+                <Loader2 className="h-4 w-4 animate-spin" />
+                PROCESSING WITH AI...
               </>
             ) : (
               <>
-                <Lightbulb className="h-4 w-4 mr-2" />
-                Transform to SMART Goal
+                <Lightbulb className="h-4 w-4" />
+                TRANSFORM TO SMART GOAL
               </>
             )}
-          </Button>
-        </CardContent>
-      </Card>
+          </button>
+        </div>
+      </div>
 
       {smartGoal && (
-        <Card className="bg-gray-900 border-green-500/50">
-          <CardHeader>
-            <CardTitle className="text-green-400">{smartGoal.title}</CardTitle>
-            <Badge variant="outline" className="w-fit">{smartGoal.category}</Badge>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-gray-300">{smartGoal.description}</p>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-3">
-                <div>
-                  <h4 className="font-medium text-white mb-1">🎯 Specific</h4>
-                  <p className="text-sm text-gray-400">{smartGoal.specific}</p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-white mb-1">📊 Measurable</h4>
-                  <p className="text-sm text-gray-400">{smartGoal.measurable}</p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-white mb-1">✅ Achievable</h4>
-                  <p className="text-sm text-gray-400">{smartGoal.achievable}</p>
-                </div>
+        <div className="neo-card-green">
+          <div className="mb-4">
+            <h3 className="neo-text-big text-black mb-2">{smartGoal.title}</h3>
+            <div className="inline-block px-3 py-1 border-2 border-black bg-white">
+              <span className="text-sm font-bold text-black uppercase">{smartGoal.category}</span>
+            </div>
+          </div>
+          
+          <p className="neo-text-small text-black mb-6">{smartGoal.description}</p>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div>
+                <h4 className="neo-text-small text-black mb-2 flex items-center gap-2">
+                  🎯 SPECIFIC
+                </h4>
+                <p className="text-sm text-black">{smartGoal.specific}</p>
               </div>
-              
-              <div className="space-y-3">
-                <div>
-                  <h4 className="font-medium text-white mb-1">🎯 Relevant</h4>
-                  <p className="text-sm text-gray-400">{smartGoal.relevant}</p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-white mb-1">⏰ Time-bound</h4>
-                  <p className="text-sm text-gray-400">{smartGoal.timeBound}</p>
-                </div>
+              <div>
+                <h4 className="neo-text-small text-black mb-2 flex items-center gap-2">
+                  📊 MEASURABLE
+                </h4>
+                <p className="text-sm text-black">{smartGoal.measurable}</p>
+              </div>
+              <div>
+                <h4 className="neo-text-small text-black mb-2 flex items-center gap-2">
+                  ✅ ACHIEVABLE
+                </h4>
+                <p className="text-sm text-black">{smartGoal.achievable}</p>
               </div>
             </div>
-
-            {smartGoal.dependencies.length > 0 && (
+            
+            <div className="space-y-4">
               <div>
-                <h4 className="font-medium text-white mb-2">🔗 Dependencies</h4>
-                <div className="flex flex-wrap gap-2">
-                  {smartGoal.dependencies.map((dep, index) => (
-                    <Badge key={index} variant="secondary">{dep}</Badge>
-                  ))}
-                </div>
+                <h4 className="neo-text-small text-black mb-2 flex items-center gap-2">
+                  🎯 RELEVANT
+                </h4>
+                <p className="text-sm text-black">{smartGoal.relevant}</p>
               </div>
-            )}
-
-            {smartGoal.milestones.length > 0 && (
               <div>
-                <h4 className="font-medium text-white mb-2">🏆 Key Milestones</h4>
-                <div className="space-y-2">
-                  {smartGoal.milestones.map((milestone, index) => (
-                    <div key={index} className="flex items-center gap-2 text-sm">
-                      <Calendar className="h-4 w-4 text-green-500" />
-                      <span className="text-green-400">Week {milestone.week}:</span>
-                      <span className="text-gray-300">{milestone.description}</span>
-                    </div>
-                  ))}
-                </div>
+                <h4 className="neo-text-small text-black mb-2 flex items-center gap-2">
+                  ⏰ TIME-BOUND
+                </h4>
+                <p className="text-sm text-black">{smartGoal.timeBound}</p>
               </div>
-            )}
-          </CardContent>
-        </Card>
+            </div>
+          </div>
+
+          {smartGoal.dependencies.length > 0 && (
+            <div className="mt-6">
+              <h4 className="neo-text-small text-black mb-3">🔗 DEPENDENCIES</h4>
+              <div className="flex flex-wrap gap-2">
+                {smartGoal.dependencies.map((dep, index) => (
+                  <div key={index} className="inline-block px-3 py-1 border-2 border-black bg-white">
+                    <span className="text-sm font-bold text-black">{dep}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {smartGoal.milestones.length > 0 && (
+            <div className="mt-6">
+              <h4 className="neo-text-small text-black mb-3">🏆 KEY MILESTONES</h4>
+              <div className="space-y-3">
+                {smartGoal.milestones.map((milestone, index) => (
+                  <div key={index} className="flex items-center gap-3 p-3 border-2 border-black bg-white">
+                    <Calendar className="h-4 w-4 text-black" />
+                    <span className="neo-text-small text-black">WEEK {milestone.week}:</span>
+                    <span className="text-sm text-black">{milestone.description}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
