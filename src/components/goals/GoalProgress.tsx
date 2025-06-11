@@ -52,10 +52,10 @@ const mockGoals: Goal[] = [
 export function GoalProgress() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'High': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      case 'Medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'Low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+      case 'High': return 'bg-red-500 text-white border-2 border-black';
+      case 'Medium': return 'bg-yellow-500 text-black border-2 border-black';
+      case 'Low': return 'bg-green-500 text-black border-2 border-black';
+      default: return 'bg-white text-black border-2 border-black';
     }
   };
 
@@ -67,14 +67,14 @@ export function GoalProgress() {
   };
 
   return (
-    <Card className="bg-gray-900 border-gray-800">
+    <div className="neo-card">
       <CardHeader>
-        <CardTitle className="text-white flex items-center">
-          <Target className="h-5 w-5 mr-2 text-green-500" />
-          Goal Progress
+        <CardTitle className="neo-text-big text-black flex items-center">
+          <Target className="h-6 w-6 mr-2" style={{ color: 'hsl(var(--neon-green))' }} strokeWidth={3} />
+          GOAL PROGRESS
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         {mockGoals.map((goal) => {
           const progressPercentage = (goal.progress / goal.target) * 100;
           const daysUntilDeadline = Math.ceil(
@@ -82,38 +82,49 @@ export function GoalProgress() {
           );
 
           return (
-            <div key={goal.id} className="p-4 bg-gray-800 rounded-lg border border-gray-700">
-              <div className="flex items-start justify-between mb-3">
+            <div key={goal.id} className="neo-card p-6">
+              <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <h4 className="font-medium text-white">{goal.title}</h4>
-                    <Badge variant="outline" className={getPriorityColor(goal.priority)}>
-                      {goal.priority}
-                    </Badge>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <h4 className="neo-text-medium text-black">{goal.title}</h4>
+                    <div className={`px-3 py-1 text-xs font-bold uppercase ${getPriorityColor(goal.priority)}`}>
+                      {priority}
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-400 mb-2">{goal.description}</p>
+                  <p className="neo-text-small text-black opacity-70 mb-4">{goal.description}</p>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="neo-text-medium text-black">
                     {formatProgress(goal.progress, goal.target, goal.category)}
                   </span>
-                  <span className="text-green-400 font-medium">
+                  <span className="neo-text-medium text-black font-bold" style={{ color: 'hsl(var(--neon-green))' }}>
                     {Math.round(progressPercentage)}%
                   </span>
                 </div>
-                <Progress value={progressPercentage} className="h-2" />
                 
-                <div className="flex items-center justify-between text-xs text-gray-500">
-                  <div className="flex items-center">
-                    <Calendar className="h-3 w-3 mr-1" />
-                    {daysUntilDeadline > 0 ? `${daysUntilDeadline} days left` : 'Overdue'}
+                <div className="w-full bg-black h-4 border-2 border-black">
+                  <div 
+                    className="h-full transition-all duration-300"
+                    style={{ 
+                      width: `${Math.min(progressPercentage, 100)}%`,
+                      background: 'hsl(var(--neon-green))'
+                    }}
+                  ></div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Calendar className="h-4 w-4 text-black" strokeWidth={3} />
+                    <span className="neo-text-small text-black">
+                      {daysUntilDeadline > 0 ? `${daysUntilDeadline} DAYS LEFT` : 'OVERDUE'}
+                    </span>
                   </div>
-                  <div className="flex items-center">
-                    <TrendingUp className="h-3 w-3 mr-1" />
-                    {goal.category}
+                  <div className="flex items-center space-x-2">
+                    <TrendingUp className="h-4 w-4 text-black" strokeWidth={3} />
+                    <span className="neo-text-small text-black">{goal.category.toUpperCase()}</span>
                   </div>
                 </div>
               </div>
@@ -121,6 +132,6 @@ export function GoalProgress() {
           );
         })}
       </CardContent>
-    </Card>
+    </div>
   );
 }
