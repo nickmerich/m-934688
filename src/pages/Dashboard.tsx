@@ -1,123 +1,105 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Target, Trophy, Calendar, Users } from 'lucide-react';
+
+import React, { useState } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { StatsOverview } from '@/components/dashboard/StatsOverview';
+import { MobileStatsOverview } from '@/components/dashboard/MobileStatsOverview';
+import { AIInsightsDashboard } from '@/components/dashboard/AIInsightsDashboard';
+import { AIGoalArchitect } from '@/components/ai/AIGoalArchitect';
+import { MindGymCoach } from '@/components/ai/MindGymCoach';
+import { UserPreferencesSetup } from '@/components/ai/UserPreferencesSetup';
+import { HabitTracker } from '@/components/habits/HabitTracker';
+import { GoalProgress } from '@/components/goals/GoalProgress';
+import { useMobile } from '@/hooks/use-mobile';
+import { 
+  Brain, 
+  Target, 
+  Dumbbell, 
+  TrendingUp, 
+  Users, 
+  Settings,
+  Zap
+} from 'lucide-react';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  const isMobile = useMobile();
+  const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <div className="min-h-screen bg-white no-gradients">
-      {/* Navigation */}
-      <nav className="bg-white border-b-4 border-black">
-        <div className="max-w-7xl mx-auto px-4 lg:px-6">
-          <div className="flex h-20 items-center justify-between">
-            {/* Back Button */}
-            <Button
-              onClick={() => navigate('/')}
-              className="neo-button flex items-center space-x-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>BACK TO HOME</span>
-            </Button>
-
-            {/* Empty middle section */}
-            <div></div>
-
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Button onClick={() => navigate('/habits')} className="neo-button">
-                HABITS
-              </Button>
-              <Button onClick={() => navigate('/goals')} className="neo-button">
-                GOALS
-              </Button>
-              <Button onClick={() => navigate('/analytics')} className="neo-button">
-                ANALYTICS
-              </Button>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gray-950 text-white">
+      <div className="container mx-auto px-4 py-6">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">Welcome to Your GRYT Command Center</h1>
+          <p className="text-gray-400">Build yourself. Do the thing. Your AI-powered growth ecosystem.</p>
         </div>
-      </nav>
 
-      {/* Main Content */}
-      <section className="bg-white py-20 lg:py-32 no-gradients">
-        <div className="max-w-7xl mx-auto px-4 lg:px-6">
-          <div className="text-center space-y-12 mb-16">
-            <div className="neo-card-green inline-block">
-              <span className="neo-text-medium text-black">🚀 YOUR COMMAND CENTER</span>
-            </div>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 bg-gray-900">
+            <TabsTrigger value="overview" className="flex items-center gap-2">
+              <TrendingUp className="h-4 w-4" />
+              {!isMobile && "Overview"}
+            </TabsTrigger>
+            <TabsTrigger value="ai-insights" className="flex items-center gap-2">
+              <Brain className="h-4 w-4" />
+              {!isMobile && "AI Insights"}
+            </TabsTrigger>
+            <TabsTrigger value="goal-architect" className="flex items-center gap-2">
+              <Target className="h-4 w-4" />
+              {!isMobile && "Goal Architect"}
+            </TabsTrigger>
+            <TabsTrigger value="mindgym" className="flex items-center gap-2">
+              <Zap className="h-4 w-4" />
+              {!isMobile && "MindGym"}
+            </TabsTrigger>
+            <TabsTrigger value="habits" className="flex items-center gap-2">
+              <Dumbbell className="h-4 w-4" />
+              {!isMobile && "Habits"}
+            </TabsTrigger>
+            <TabsTrigger value="goals" className="flex items-center gap-2">
+              <Target className="h-4 w-4" />
+              {!isMobile && "Goals"}
+            </TabsTrigger>
+            <TabsTrigger value="settings" className="flex items-center gap-2">
+              <Settings className="h-4 w-4" />
+              {!isMobile && "Settings"}
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-6">
+            {/* Stats Overview */}
+            {isMobile ? <MobileStatsOverview /> : <StatsOverview />}
             
-            <h1 className="neo-text-huge text-black">
-              DASHBOARD
-              <span className="block" style={{
-                color: 'hsl(var(--neon-green))'
-              }}>
-                OVERVIEW
-              </span>
-            </h1>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="neo-grid mb-16">
-            <div className="neo-card-green">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
-                  <Target className="h-8 w-8 text-white" strokeWidth={3} />
-                </div>
-                <h3 className="neo-text-big text-black mb-4">ACTIVE HABITS</h3>
-                <p className="neo-text-huge text-black">12</p>
-              </div>
+            {/* Quick AI Insights Preview */}
+            <div className="grid lg:grid-cols-2 gap-6">
+              <AIInsightsDashboard />
             </div>
+          </TabsContent>
 
-            <div className="neo-card-grey">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
-                  <Trophy className="h-8 w-8 text-white" strokeWidth={3} />
-                </div>
-                <h3 className="neo-text-big text-white mb-4">GOALS ACHIEVED</h3>
-                <p className="neo-text-huge text-white">5</p>
-              </div>
-            </div>
+          <TabsContent value="ai-insights">
+            <AIInsightsDashboard />
+          </TabsContent>
 
-            <div className="neo-card">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
-                  <Calendar className="h-8 w-8 text-white" strokeWidth={3} />
-                </div>
-                <h3 className="neo-text-big text-black mb-4">STREAK DAYS</h3>
-                <p className="neo-text-huge text-black">47</p>
-              </div>
-            </div>
+          <TabsContent value="goal-architect">
+            <AIGoalArchitect />
+          </TabsContent>
 
-            <div className="neo-card-charcoal">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-black border-4 border-black mb-6">
-                  <Users className="h-8 w-8 text-white" strokeWidth={3} />
-                </div>
-                <h3 className="neo-text-big text-white mb-4">COMMUNITY RANK</h3>
-                <p className="neo-text-huge text-white">#42</p>
-              </div>
-            </div>
-          </div>
+          <TabsContent value="mindgym">
+            <MindGymCoach />
+          </TabsContent>
 
-          {/* Quick Actions */}
-          <div className="text-center space-y-8">
-            <h2 className="neo-text-big text-black">QUICK ACTIONS</h2>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Button onClick={() => navigate('/habits')} className="neo-button-primary text-xl px-12 py-6">
-                TRACK HABITS
-              </Button>
-              <Button onClick={() => navigate('/goals')} className="neo-button-accent text-xl px-12 py-6">
-                SET GOALS
-              </Button>
-              <Button onClick={() => navigate('/analytics')} className="neo-button text-xl px-12 py-6">
-                VIEW ANALYTICS
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+          <TabsContent value="habits">
+            <HabitTracker />
+          </TabsContent>
+
+          <TabsContent value="goals">
+            <GoalProgress />
+          </TabsContent>
+
+          <TabsContent value="settings">
+            <UserPreferencesSetup />
+          </TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };
