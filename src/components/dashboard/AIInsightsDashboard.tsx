@@ -27,6 +27,7 @@ interface AIInsight {
   priority: string;
   action_required: boolean;
   is_viewed: boolean;
+  is_acted_upon?: boolean; // Add this optional property
   created_at: string;
   metadata: any;
 }

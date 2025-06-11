@@ -9,7 +9,7 @@ import { MindGymCoach } from '@/components/ai/MindGymCoach';
 import { UserPreferencesSetup } from '@/components/ai/UserPreferencesSetup';
 import { HabitTracker } from '@/components/habits/HabitTracker';
 import { GoalProgress } from '@/components/goals/GoalProgress';
-import { useMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Brain, 
   Target, 
@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 
 const Dashboard = () => {
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const [activeTab, setActiveTab] = useState('overview');
 
   return (

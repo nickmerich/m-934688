@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,14 +10,16 @@ import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
+interface NotificationPreferences {
+  daily_nudges: boolean;
+  mood_checkins: boolean;
+  goal_reminders: boolean;
+}
+
 interface UserPreferences {
   ai_coach_persona: string;
   coaching_style: string;
-  notification_preferences: {
-    daily_nudges: boolean;
-    mood_checkins: boolean;
-    goal_reminders: boolean;
-  };
+  notification_preferences: NotificationPreferences;
   timezone: string;
 }
 
@@ -59,14 +60,18 @@ export function UserPreferencesSetup() {
     }
 
     if (data) {
+      // Type-safe parsing of notification_preferences
+      const notificationPrefs = data.notification_preferences as any;
+      const typedNotificationPrefs: NotificationPreferences = {
+        daily_nudges: typeof notificationPrefs === 'object' && notificationPrefs?.daily_nudges === true,
+        mood_checkins: typeof notificationPrefs === 'object' && notificationPrefs?.mood_checkins === true,
+        goal_reminders: typeof notificationPrefs === 'object' && notificationPrefs?.goal_reminders === true,
+      };
+
       setPreferences({
         ai_coach_persona: data.ai_coach_persona || 'balanced',
         coaching_style: data.coaching_style || 'supportive',
-        notification_preferences: data.notification_preferences || {
-          daily_nudges: true,
-          mood_checkins: true,
-          goal_reminders: true,
-        },
+        notification_preferences: typedNotificationPrefs,
         timezone: data.timezone || 'UTC'
       });
       setHasExistingPrefs(true);
@@ -108,7 +113,7 @@ export function UserPreferencesSetup() {
     }
   };
 
-  const updateNotificationPreference = (key: keyof typeof preferences.notification_preferences, value: boolean) => {
+  const updateNotificationPreference = (key: keyof NotificationPreferences, value: boolean) => {
     setPreferences(prev => ({
       ...prev,
       notification_preferences: {

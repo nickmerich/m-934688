@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react"
 
 const MOBILE_BREAKPOINT = 768
@@ -18,6 +17,9 @@ export function useIsMobile() {
 
   return !!isMobile
 }
+
+// Add the useMobile alias for backward compatibility
+export const useMobile = useIsMobile;
 
 // Enhanced mobile utilities with performance optimizations
 export function useScreenSize() {
