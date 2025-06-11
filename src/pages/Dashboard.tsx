@@ -47,52 +47,52 @@ const Dashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 bg-white border-4 border-black neo-shadow-harsh">
+          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 bg-white border-4 border-black neo-shadow-harsh p-2">
             <TabsTrigger 
               value="overview" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <TrendingUp className="h-4 w-4" />
               {!isMobile && "OVERVIEW"}
             </TabsTrigger>
             <TabsTrigger 
               value="ai-insights" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <Brain className="h-4 w-4" />
               {!isMobile && "AI INSIGHTS"}
             </TabsTrigger>
             <TabsTrigger 
               value="goal-architect" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <Target className="h-4 w-4" />
               {!isMobile && "GOAL ARCHITECT"}
             </TabsTrigger>
             <TabsTrigger 
               value="mindgym" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <Zap className="h-4 w-4" />
               {!isMobile && "MINDGYM"}
             </TabsTrigger>
             <TabsTrigger 
               value="habits" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <Dumbbell className="h-4 w-4" />
               {!isMobile && "HABITS"}
             </TabsTrigger>
             <TabsTrigger 
               value="goals" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <Target className="h-4 w-4" />
               {!isMobile && "GOALS"}
             </TabsTrigger>
             <TabsTrigger 
               value="settings" 
-              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black"
+              className="neo-button flex items-center gap-2 data-[state=active]:neo-card-green data-[state=active]:text-black data-[state=inactive]:bg-white data-[state=inactive]:text-black data-[state=inactive]:border-2 data-[state=inactive]:border-black m-1"
             >
               <Settings className="h-4 w-4" />
               {!isMobile && "SETTINGS"}
