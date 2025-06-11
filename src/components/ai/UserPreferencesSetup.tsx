@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -89,7 +90,7 @@ export function UserPreferencesSetup() {
           user_id: user.id,
           ai_coach_persona: preferences.ai_coach_persona,
           coaching_style: preferences.coaching_style,
-          notification_preferences: preferences.notification_preferences,
+          notification_preferences: preferences.notification_preferences as any, // Cast to Json type
           timezone: preferences.timezone,
           updated_at: new Date().toISOString()
         });
