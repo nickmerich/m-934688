@@ -204,126 +204,129 @@ export function MindGymCoach() {
   return (
     <div className="space-y-6">
       {/* Persona Selection */}
-      <Card className="bg-gray-900 border-gray-800">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-green-500">
-            <Brain className="h-5 w-5" />
-            Choose Your AI Coach Persona
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {personas.map((persona) => (
-              <button
-                key={persona.id}
-                onClick={() => setCurrentPersona(persona.id)}
-                className={`p-3 rounded-lg border text-left transition-colors ${
-                  currentPersona === persona.id
-                    ? 'border-green-500 bg-green-500/10'
-                    : 'border-gray-700 bg-gray-800 hover:border-gray-600'
-                }`}
-              >
-                <div className="text-2xl mb-1">{persona.icon}</div>
-                <div className="font-medium text-white text-sm">{persona.name}</div>
-                <div className="text-xs text-gray-400">{persona.description}</div>
-              </button>
-            ))}
+      <div className="neo-card">
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <Brain className="h-6 w-6 text-black" />
+            <h2 className="neo-text-big text-black">CHOOSE YOUR AI COACH PERSONA</h2>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {personas.map((persona) => (
+            <button
+              key={persona.id}
+              onClick={() => setCurrentPersona(persona.id)}
+              className={`p-4 border-4 border-black text-left transition-all ${
+                currentPersona === persona.id
+                  ? 'neo-card-green'
+                  : 'neo-card hover:transform hover:translate-x-1 hover:translate-y-1'
+              }`}
+              style={{
+                boxShadow: currentPersona === persona.id 
+                  ? '4px 4px 0px #000000' 
+                  : '2px 2px 0px #000000'
+              }}
+            >
+              <div className="text-2xl mb-2">{persona.icon}</div>
+              <div className="neo-text-small text-black mb-1">{persona.name}</div>
+              <div className="text-sm text-black">{persona.description}</div>
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Quick Actions */}
-      <div className="grid md:grid-cols-2 gap-4">
-        <Card className="bg-gray-900 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-white">Reflection Session</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="neo-card">
+          <div className="mb-4">
+            <h3 className="neo-text-big text-black">REFLECTION SESSION</h3>
+          </div>
+          <div className="space-y-4">
             <Textarea
               placeholder="What's on your mind? Share your thoughts, challenges, or wins..."
               value={reflectionText}
               onChange={(e) => setReflectionText(e.target.value)}
-              className="bg-gray-800 border-gray-700 text-white"
+              className="neo-border bg-white text-black placeholder:text-gray-500 focus:outline-none focus:ring-0 rounded-none"
               rows={3}
             />
-            <Button
+            <button
               onClick={startReflectionSession}
               disabled={!reflectionText.trim() || isLoading}
-              className="w-full bg-blue-600 hover:bg-blue-700"
+              className="neo-button-primary w-full flex items-center justify-center gap-2"
             >
-              <MessageSquare className="h-4 w-4 mr-2" />
-              Start Reflection
-            </Button>
-          </CardContent>
-        </Card>
+              <MessageSquare className="h-4 w-4" />
+              START REFLECTION
+            </button>
+          </div>
+        </div>
 
-        <Card className="bg-gray-900 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-white">Quick Boost</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button
+        <div className="neo-card">
+          <div className="mb-4">
+            <h3 className="neo-text-big text-black">QUICK BOOST</h3>
+          </div>
+          <div className="space-y-4">
+            <button
               onClick={getMotivation}
               disabled={isLoading}
-              className="w-full bg-purple-600 hover:bg-purple-700"
+              className="neo-button-primary w-full flex items-center justify-center gap-2"
             >
-              <Sparkles className="h-4 w-4 mr-2" />
-              Get Motivated!
-            </Button>
-            <p className="text-xs text-gray-400 mt-2">
-              Get a personalized motivational message from your AI coach
+              <Sparkles className="h-4 w-4" />
+              GET MOTIVATED!
+            </button>
+            <p className="neo-text-small text-black">
+              GET A PERSONALIZED MOTIVATIONAL MESSAGE FROM YOUR AI COACH
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
 
       {/* Recent Sessions */}
-      <Card className="bg-gray-900 border-gray-800">
-        <CardHeader>
-          <CardTitle className="text-white">Recent Coaching Sessions</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {sessions.length === 0 ? (
-            <p className="text-gray-400 text-center py-8">
-              No coaching sessions yet. Start a reflection or get your daily nudge!
+      <div className="neo-card">
+        <div className="mb-6">
+          <h2 className="neo-text-big text-black">RECENT COACHING SESSIONS</h2>
+        </div>
+        {sessions.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="neo-text-medium text-black">
+              NO COACHING SESSIONS YET. START A REFLECTION OR GET YOUR DAILY NUDGE!
             </p>
-          ) : (
-            <div className="space-y-4">
-              {sessions.map((session) => (
-                <div key={session.id} className="p-4 bg-gray-800 rounded-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline">{formatSessionType(session.session_type)}</Badge>
-                    <span className="text-xs text-gray-400">
-                      {new Date(session.created_at).toLocaleDateString()}
-                    </span>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {sessions.map((session) => (
+              <div key={session.id} className="neo-card p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="inline-block px-3 py-1 border-2 border-black bg-white">
+                    <span className="text-sm font-bold text-black uppercase">{formatSessionType(session.session_type)}</span>
                   </div>
-                  <p className="text-gray-300 mb-3">{session.ai_response}</p>
-                  
-                  {!session.user_feedback && (
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-gray-400">Was this helpful?</span>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => provideFeedback(session.id, 5)}
-                      >
-                        <ThumbsUp className="h-3 w-3" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => provideFeedback(session.id, 2)}
-                      >
-                        <ThumbsDown className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  )}
+                  <span className="neo-text-small text-black">
+                    {new Date(session.created_at).toLocaleDateString()}
+                  </span>
                 </div>
-              ))}
-            </div>
-          )}
-        </CardContent>
-      </Card>
+                <p className="neo-text-medium text-black mb-4">{session.ai_response}</p>
+                
+                {!session.user_feedback && (
+                  <div className="flex items-center gap-3">
+                    <span className="neo-text-small text-black">WAS THIS HELPFUL?</span>
+                    <button
+                      onClick={() => provideFeedback(session.id, 5)}
+                      className="neo-button flex items-center gap-2"
+                    >
+                      <ThumbsUp className="h-3 w-3" />
+                    </button>
+                    <button
+                      onClick={() => provideFeedback(session.id, 2)}
+                      className="neo-button flex items-center gap-2"
+                    >
+                      <ThumbsDown className="h-3 w-3" />
+                    </button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

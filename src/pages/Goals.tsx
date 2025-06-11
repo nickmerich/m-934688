@@ -318,8 +318,11 @@ const Goals = () => {
                         
                         <div className="w-full bg-black h-4 border-2 border-black">
                           <div 
-                            className="h-full bg-white transition-all duration-300"
-                            style={{ width: `${Math.min(progressPercentage, 100)}%` }}
+                            className="h-full transition-all duration-300"
+                            style={{ 
+                              width: `${Math.min(progressPercentage, 100)}%`,
+                              background: isCompleted ? 'hsl(var(--neon-green))' : '#ffffff'
+                            }}
                           ></div>
                         </div>
                         
