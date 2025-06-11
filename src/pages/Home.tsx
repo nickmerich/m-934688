@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -37,11 +38,11 @@ const Home = () => {
             </div>
             
             <h1 className="neo-text-massive text-black">
-              BUILD HABITS
+              BUILD YOURSELF.
               <span className="block" style={{
                 color: 'hsl(var(--neon-green))'
               }}>
-                THAT STICK
+                DO THE THING.
               </span>
             </h1>
             
