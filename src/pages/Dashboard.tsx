@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StatsOverview } from '@/components/dashboard/StatsOverview';
@@ -29,12 +28,6 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="mb-8 text-center">
-          <div className="inline-block bg-green-500 border-4 border-black px-3 py-1 mb-4" style={{
-            background: 'hsl(var(--neon-green))',
-            boxShadow: '4px 4px 0px #000000'
-          }}>
-            <span className="text-sm font-bold text-black">🚀 COMMAND CENTER</span>
-          </div>
           <h1 className="neo-text-massive text-black mb-2">
             GRYT
             <span className="block" style={{
