@@ -105,7 +105,7 @@ const Dashboard = () => {
               }}
             >
               <Target className="h-4 w-4" />
-              {!isMobile && "GOALS"}
+              {!isMobile && "GOAL PROGRESS"}
             </TabsTrigger>
             <TabsTrigger 
               value="settings" 
