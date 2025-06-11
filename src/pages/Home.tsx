@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -47,9 +46,8 @@ const Home = () => {
             </h1>
             
             <p className="neo-text-big text-black max-w-3xl mx-auto leading-relaxed">
-              THE ULTIMATE HABIT TRACKER THAT COMBINES POWERFUL ANALYTICS, 
-              AI COACHING, AND SOCIAL ACCOUNTABILITY TO HELP YOU BUILD 
-              LASTING POSITIVE CHANGES
+              AI-POWERED IDENTITY SYSTEM THAT TRANSFORMS WHO YOU ARE BY 
+              GUIDING YOUR GOALS, EMOTIONS, AND ACTIONS.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
