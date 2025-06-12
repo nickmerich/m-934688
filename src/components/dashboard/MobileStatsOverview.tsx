@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Target, Calendar, Trophy, TrendingUp } from 'lucide-react';
 import { MobileOptimizedCard, MobileCardContent } from '@/components/mobile/MobileOptimizedCard';
@@ -30,23 +29,19 @@ function MobileStatCard({ title, value, description, icon, trend, onClick }: Sta
       hapticType="light"
     >
       <MobileCardContent padding="sm">
-        <div className="flex flex-col items-center text-center space-y-3">
+        <div className="flex flex-col items-center text-center space-y-2">
           {/* Icon at the top */}
-          <div className="p-3 bg-black rounded-lg text-white">
+          <div className="p-2.5 bg-black rounded-lg text-white">
             {icon}
           </div>
           
           {/* Data block below icon */}
-          <div className="bg-gray-600 p-4 rounded-lg w-full text-white">
-            <div className="mobile-text-xl font-bold mb-1">{value}</div>
+          <div className="bg-gray-600 p-3 rounded-lg w-full text-white">
+            <div className="mobile-text-lg font-bold mb-1">{value}</div>
             <div className="mobile-text-xs text-gray-300 mb-2">{title}</div>
-            <div className="flex items-center justify-between">
-              <span className="mobile-text-xs text-gray-400">{description}</span>
-              <span className={`mobile-text-xs font-medium px-2 py-1 rounded-full ${
-                trend > 0 
-                  ? 'text-green-400 bg-green-500/20' 
-                  : 'text-red-400 bg-red-500/20'
-              }`}>
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-gray-400">{description}</span>
+              <span className="font-medium px-2 py-0.5 rounded-full bg-white text-black">
                 {trend > 0 ? '+' : ''}{trend}%
               </span>
             </div>
