@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StatsOverview } from '@/components/dashboard/StatsOverview';
@@ -61,7 +62,7 @@ const Dashboard = () => {
               }}
             >
               <Brain className="h-4 w-4" />
-              {!isMobile && "AI INSIGHTS"}
+              {!isMobile && "INSIGHTS"}
             </TabsTrigger>
             <TabsTrigger 
               value="goal-architect" 
@@ -72,7 +73,7 @@ const Dashboard = () => {
               }}
             >
               <Target className="h-4 w-4" />
-              {!isMobile && "GOAL ARCHITECT"}
+              {!isMobile && "GOALS"}
             </TabsTrigger>
             <TabsTrigger 
               value="mindgym" 
@@ -83,7 +84,7 @@ const Dashboard = () => {
               }}
             >
               <Zap className="h-4 w-4" />
-              {!isMobile && "MINDGYM"}
+              {!isMobile && "MIND"}
             </TabsTrigger>
             <TabsTrigger 
               value="habits" 
@@ -105,7 +106,7 @@ const Dashboard = () => {
               }}
             >
               <Target className="h-4 w-4" />
-              {!isMobile && "GOAL PROGRESS"}
+              {!isMobile && "PROGRESS"}
             </TabsTrigger>
             <TabsTrigger 
               value="settings" 
