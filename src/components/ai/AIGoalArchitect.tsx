@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -103,7 +102,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
         <div className="space-y-6">
           <div>
             <label className="block neo-text-small text-black mb-3">
-              WHAT DO YOU WANT TO ACHIEVE? (BE AS VAGUE AS YOU WANT!)
+              WHAT DO YOU WANT TO ACHIEVE?
             </label>
             <Textarea
               placeholder="e.g., 'get in shape', 'learn something new', 'be more productive'..."
