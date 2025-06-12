@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StatsOverview } from '@/components/dashboard/StatsOverview';
@@ -26,9 +25,9 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-white no-gradients">
-      <div className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-4 py-6 lg:px-6 lg:py-8">
         {/* Header */}
-        <div className="mb-8 text-center">
+        <div className="mb-6 lg:mb-8 text-center">
           <h1 className="neo-text-massive text-black mb-2">
             GRYT
             <span className="block" style={{
@@ -40,7 +39,7 @@ const Dashboard = () => {
           <p className="neo-text-big text-black">BUILD YOURSELF. DO THE THING.</p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 lg:space-y-6">
           <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 bg-white border-4 border-black neo-shadow-harsh p-2 gap-2">
             <TabsTrigger 
               value="overview" 
@@ -121,39 +120,41 @@ const Dashboard = () => {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview" className="space-y-6">
-            {/* Stats Overview */}
-            {isMobile ? <MobileStatsOverview /> : <StatsOverview />}
-            
-            {/* Quick AI Insights Preview */}
-            <div className="grid lg:grid-cols-2 gap-6">
+          <div className="px-0">
+            <TabsContent value="overview" className="space-y-6 mt-4">
+              {/* Stats Overview */}
+              {isMobile ? <MobileStatsOverview /> : <StatsOverview />}
+              
+              {/* Quick AI Insights Preview */}
+              <div className="grid lg:grid-cols-2 gap-6">
+                <AIInsightsDashboard />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="ai-insights" className="mt-4">
               <AIInsightsDashboard />
-            </div>
-          </TabsContent>
+            </TabsContent>
 
-          <TabsContent value="ai-insights">
-            <AIInsightsDashboard />
-          </TabsContent>
+            <TabsContent value="goal-architect" className="mt-4">
+              <AIGoalArchitect />
+            </TabsContent>
 
-          <TabsContent value="goal-architect">
-            <AIGoalArchitect />
-          </TabsContent>
+            <TabsContent value="mindgym" className="mt-4">
+              <MindGymCoach />
+            </TabsContent>
 
-          <TabsContent value="mindgym">
-            <MindGymCoach />
-          </TabsContent>
+            <TabsContent value="habits" className="mt-4">
+              <HabitTracker />
+            </TabsContent>
 
-          <TabsContent value="habits">
-            <HabitTracker />
-          </TabsContent>
+            <TabsContent value="goals" className="mt-4">
+              <GoalProgress />
+            </TabsContent>
 
-          <TabsContent value="goals">
-            <GoalProgress />
-          </TabsContent>
-
-          <TabsContent value="settings">
-            <UserPreferencesSetup />
-          </TabsContent>
+            <TabsContent value="settings" className="mt-4">
+              <UserPreferencesSetup />
+            </TabsContent>
+          </div>
         </Tabs>
       </div>
     </div>

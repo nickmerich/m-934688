@@ -23,7 +23,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
       <div className="min-h-screen flex flex-col bg-gray-950 relative">
         <MobileNavbar />
         <main className="flex-1 pb-20 overflow-x-hidden">
-          <div className="safe-area-top">
+          <div className="safe-area-top px-4 py-6">
             {children}
           </div>
         </main>
@@ -40,7 +40,7 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
         <main className={`flex-1 transition-all duration-300 overflow-hidden ${
           isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64'
         }`}>
-          <div className="h-full overflow-auto p-4 lg:p-6">
+          <div className="h-full overflow-auto px-4 py-6 lg:px-6 lg:py-8">
             {children}
           </div>
         </main>

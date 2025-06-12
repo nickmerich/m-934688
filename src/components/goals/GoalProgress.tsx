@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Target, Calendar, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Goal {
   id: string;
@@ -50,6 +50,8 @@ const mockGoals: Goal[] = [
 ];
 
 export function GoalProgress() {
+  const isMobile = useIsMobile();
+
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'High': return 'bg-red-500 text-white border-2 border-black';
@@ -68,13 +70,13 @@ export function GoalProgress() {
 
   return (
     <div className="neo-card">
-      <CardHeader>
+      <CardHeader className={isMobile ? 'p-4' : 'p-6'}>
         <CardTitle className="neo-text-big text-black flex items-center">
           <Target className="h-6 w-6 mr-2" style={{ color: 'hsl(var(--neon-green))' }} strokeWidth={3} />
           GOAL PROGRESS
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className={`space-y-6 ${isMobile ? 'p-4 pt-0' : 'p-6 pt-0'}`}>
         {mockGoals.map((goal) => {
           const progressPercentage = (goal.progress / goal.target) * 100;
           const daysUntilDeadline = Math.ceil(
@@ -82,10 +84,10 @@ export function GoalProgress() {
           );
 
           return (
-            <div key={goal.id} className="neo-card p-6">
-              <div className="flex items-start justify-between mb-4">
+            <div key={goal.id} className={`neo-card ${isMobile ? 'p-4' : 'p-6'}`}>
+              <div className={`flex items-start justify-between mb-4 ${isMobile ? 'flex-col space-y-2' : ''}`}>
                 <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
+                  <div className={`flex items-center space-x-3 mb-2 ${isMobile ? 'flex-wrap gap-2' : ''}`}>
                     <h4 className="neo-text-medium text-black">{goal.title}</h4>
                     <div className={`px-3 py-1 text-xs font-bold uppercase ${getPriorityColor(goal.priority)}`}>
                       {goal.priority}
@@ -115,7 +117,7 @@ export function GoalProgress() {
                   ></div>
                 </div>
                 
-                <div className="flex items-center justify-between">
+                <div className={`flex items-center justify-between ${isMobile ? 'flex-col space-y-2 items-start' : ''}`}>
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-4 w-4 text-black" strokeWidth={3} />
                     <span className="neo-text-small text-black">

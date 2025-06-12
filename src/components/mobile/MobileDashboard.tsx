@@ -63,7 +63,7 @@ export function MobileDashboard() {
 
   return (
     <MobilePullToRefresh onRefresh={handleRefresh} className="min-h-screen bg-gray-950">
-      <div className="mobile-spacing-md safe-area-top">
+      <div className="px-4 py-6 safe-area-top">
         {/* Welcome Section */}
         <div className="mb-6">
           <h1 className="mobile-text-xl font-bold text-white mb-2">

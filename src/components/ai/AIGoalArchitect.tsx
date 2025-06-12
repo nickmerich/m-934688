@@ -7,6 +7,7 @@ import { Loader2, Target, Lightbulb, Calendar, Trophy } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface SmartGoal {
   title: string;
@@ -32,6 +33,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
   const [selectedPersona, setSelectedPersona] = useState<string>('balanced');
   const { user } = useAuth();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
   const personas = [
     { id: 'athlete_2_0', label: 'Athlete 2.0', description: 'Performance-focused, data-driven' },
@@ -92,7 +94,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className={`space-y-6 ${isMobile ? 'px-0' : ''}`}>
       <div className="neo-card">
         <div className="flex items-center gap-2 mb-6">
           <Target className="h-6 w-6 text-black" />
@@ -117,7 +119,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
             <label className="block neo-text-small text-black mb-3">
               CHOOSE YOUR PERSONA
             </label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className={`grid ${isMobile ? 'grid-cols-1 gap-3' : 'grid-cols-2 gap-3'}`}>
               {personas.map((persona) => (
                 <button
                   key={persona.id}
@@ -171,7 +173,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
           
           <p className="neo-text-small text-black mb-6">{smartGoal.description}</p>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'md:grid-cols-2 gap-6'}`}>
             <div className="space-y-4">
               <div>
                 <h4 className="neo-text-small text-black mb-2 flex items-center gap-2">
@@ -227,7 +229,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
               <h4 className="neo-text-small text-black mb-3">🏆 KEY MILESTONES</h4>
               <div className="space-y-3">
                 {smartGoal.milestones.map((milestone, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 border-2 border-black bg-white">
+                  <div key={index} className={`flex items-center gap-3 p-3 border-2 border-black bg-white ${isMobile ? 'flex-col items-start' : ''}`}>
                     <Calendar className="h-4 w-4 text-black" />
                     <span className="neo-text-small text-black">WEEK {milestone.week}:</span>
                     <span className="text-sm text-black">{milestone.description}</span>
