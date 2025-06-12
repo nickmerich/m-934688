@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -161,11 +160,7 @@ export function UserPreferencesSetup() {
       <div className="space-y-8">
         {/* AI Persona Selection */}
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <Brain className="h-5 w-5 text-black" />
-            <h3 className="neo-text-medium text-black">CHOOSE YOUR AI COACH PERSONA</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {personas.map((persona) => (
               <button
                 key={persona.value}
@@ -180,6 +175,10 @@ export function UserPreferencesSetup() {
                 <div className="text-sm text-black">{persona.description}</div>
               </button>
             ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <Brain className="h-5 w-5 text-black" />
+            <h3 className="neo-text-medium text-black">CHOOSE YOUR AI COACH PERSONA</h3>
           </div>
         </div>
 

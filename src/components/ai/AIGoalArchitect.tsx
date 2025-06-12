@@ -116,10 +116,7 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
           </div>
 
           <div>
-            <label className="block neo-text-small text-black mb-3">
-              CHOOSE YOUR PERSONA
-            </label>
-            <div className={`grid ${isMobile ? 'grid-cols-1 gap-3' : 'grid-cols-2 gap-3'}`}>
+            <div className={`grid ${isMobile ? 'grid-cols-1 gap-3' : 'grid-cols-2 gap-3'} mb-4`}>
               {personas.map((persona) => (
                 <button
                   key={persona.id}
@@ -140,6 +137,9 @@ export function AIGoalArchitect({ onGoalCreated }: AIGoalArchitectProps) {
                 </button>
               ))}
             </div>
+            <label className="block neo-text-small text-black">
+              CHOOSE YOUR PERSONA
+            </label>
           </div>
 
           <button

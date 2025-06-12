@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -208,10 +207,10 @@ export function MindGymCoach() {
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-4">
             <Brain className="h-6 w-6 text-black" />
-            <h2 className="neo-text-big text-black">CHOOSE YOUR AI COACH PERSONA</h2>
+            <h2 className="neo-text-big text-black">MIND GYM COACH</h2>
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
           {personas.map((persona) => (
             <button
               key={persona.id}
@@ -233,6 +232,7 @@ export function MindGymCoach() {
             </button>
           ))}
         </div>
+        <h3 className="neo-text-medium text-black text-center">CHOOSE YOUR AI COACH PERSONA</h3>
       </div>
 
       {/* Quick Actions */}
