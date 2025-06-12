@@ -25,27 +25,31 @@ function MobileStatCard({ title, value, description, icon, trend, onClick }: Sta
 
   return (
     <MobileOptimizedCard 
-      className="mobile-card-compact"
+      className="mobile-card-compact bg-green-500 border-4 border-black"
       onTap={handleClick}
       hapticType="light"
     >
       <MobileCardContent padding="sm">
-        <div className="mobile-flex-between">
-          <div className="mobile-flex-start space-x-3">
-            <div className="p-2 bg-green-500/10 rounded-lg text-green-500 gpu-accelerated">
-              {icon}
-            </div>
-            <div>
-              <div className="mobile-text-lg font-bold text-white">{value}</div>
-              <div className="mobile-text-xs text-gray-400">{title}</div>
-            </div>
+        <div className="flex flex-col items-center text-center space-y-3">
+          {/* Icon at the top */}
+          <div className="p-3 bg-black rounded-lg text-white">
+            {icon}
           </div>
-          <div className={`mobile-text-xs font-medium px-2 py-1 rounded-full ${
-            trend > 0 
-              ? 'text-green-400 bg-green-500/10' 
-              : 'text-red-400 bg-red-500/10'
-          }`}>
-            {trend > 0 ? '+' : ''}{trend}%
+          
+          {/* Data block below icon */}
+          <div className="bg-gray-600 p-4 rounded-lg w-full text-white">
+            <div className="mobile-text-xl font-bold mb-1">{value}</div>
+            <div className="mobile-text-xs text-gray-300 mb-2">{title}</div>
+            <div className="flex items-center justify-between">
+              <span className="mobile-text-xs text-gray-400">{description}</span>
+              <span className={`mobile-text-xs font-medium px-2 py-1 rounded-full ${
+                trend > 0 
+                  ? 'text-green-400 bg-green-500/20' 
+                  : 'text-red-400 bg-red-500/20'
+              }`}>
+                {trend > 0 ? '+' : ''}{trend}%
+              </span>
+            </div>
           </div>
         </div>
       </MobileCardContent>
@@ -59,7 +63,7 @@ export function MobileStatsOverview() {
       title: "Active Habits",
       value: "8",
       description: "habits tracked",
-      icon: <Calendar className="h-4 w-4" />,
+      icon: <Calendar className="h-5 w-5" />,
       trend: 12.5,
       onClick: () => console.log('Navigate to habits')
     },
@@ -67,7 +71,7 @@ export function MobileStatsOverview() {
       title: "Goals in Progress",
       value: "3",
       description: "active goals",
-      icon: <Target className="h-4 w-4" />,
+      icon: <Target className="h-5 w-5" />,
       trend: 25.0,
       onClick: () => console.log('Navigate to goals')
     },
@@ -75,7 +79,7 @@ export function MobileStatsOverview() {
       title: "Completion Rate",
       value: "87%",
       description: "this week",
-      icon: <TrendingUp className="h-4 w-4" />,
+      icon: <TrendingUp className="h-5 w-5" />,
       trend: 5.2,
       onClick: () => console.log('View analytics')
     },
@@ -83,14 +87,14 @@ export function MobileStatsOverview() {
       title: "Total Wins",
       value: "2,450",
       description: "lifetime points",
-      icon: <Trophy className="h-4 w-4" />,
+      icon: <Trophy className="h-5 w-5" />,
       trend: 15.8,
       onClick: () => console.log('View achievements')
     }
   ];
 
   return (
-    <div className="mobile-grid-2 gap-3">
+    <div className="mobile-grid-2 gap-4">
       {stats.map((stat, index) => (
         <MobileStatCard key={index} {...stat} />
       ))}
