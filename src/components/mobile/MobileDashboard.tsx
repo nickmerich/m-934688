@@ -63,23 +63,23 @@ export function MobileDashboard() {
 
   return (
     <MobilePullToRefresh onRefresh={handleRefresh} className="min-h-screen bg-gray-950">
-      <div className="px-4 py-6 safe-area-top">
+      <div className="px-4 py-4 safe-area-top space-y-4">
         {/* Welcome Section */}
-        <div className="mb-6">
-          <h1 className="mobile-text-xl font-bold text-white mb-2">
+        <div className="mb-4">
+          <h1 className="text-xl font-bold text-white mb-1">
             Good morning! 👋
           </h1>
-          <p className="mobile-text-sm text-gray-400">
+          <p className="text-sm text-gray-400">
             Let's make today count
           </p>
         </div>
 
         {/* Quick Actions */}
-        <MobileOptimizedCard className="mb-6" animated={false}>
+        <MobileOptimizedCard className="mb-4" animated={false}>
           <MobileCardHeader>
-            <h2 className="mobile-text-lg font-semibold text-white">Quick Actions</h2>
+            <h2 className="text-lg font-semibold text-white">Quick Actions</h2>
           </MobileCardHeader>
-          <MobileCardContent className="mobile-grid-2 gap-3">
+          <MobileCardContent className="grid grid-cols-2 gap-3">
             {quickActions.map((action, index) => {
               const IconComponent = action.icon;
               return (
@@ -87,13 +87,14 @@ export function MobileDashboard() {
                   key={index}
                   onClick={action.action}
                   className={`
-                    mobile-button p-4 rounded-lg bg-gradient-to-r ${action.color}
-                    flex flex-col items-center space-y-2 text-white
-                    shadow-lg hover:shadow-xl
+                    p-3 rounded-lg bg-gradient-to-r ${action.color}
+                    flex flex-col items-center space-y-1 text-white
+                    shadow-lg hover:shadow-xl transition-all duration-200
+                    min-h-[60px] touch-manipulation
                   `}
                 >
-                  <IconComponent className="h-6 w-6" />
-                  <span className="mobile-text-xs font-medium">{action.label}</span>
+                  <IconComponent className="h-5 w-5" />
+                  <span className="text-xs font-medium">{action.label}</span>
                 </button>
               );
             })}
@@ -101,19 +102,19 @@ export function MobileDashboard() {
         </MobileOptimizedCard>
 
         {/* Stats Overview */}
-        <div className="mb-6">
+        <div className="mb-4">
           <MobileStatsOverview />
         </div>
 
         {/* Today's Habits */}
-        <div className="mb-6">
+        <div className="mb-4">
           <MobileHabitTracker />
         </div>
 
         {/* Recent Activity */}
         <MobileOptimizedCard>
           <MobileCardHeader>
-            <h2 className="mobile-text-lg font-semibold text-white">Recent Activity</h2>
+            <h2 className="text-lg font-semibold text-white">Recent Activity</h2>
           </MobileCardHeader>
           <MobileCardContent>
             <div className="space-y-3">
@@ -123,12 +124,12 @@ export function MobileDashboard() {
                 { action: 'Workout streak: 5 days!', time: '2 days ago', type: 'achievement' }
               ].map((activity, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                  <div>
-                    <p className="mobile-text-sm text-white font-medium">{activity.action}</p>
-                    <p className="mobile-text-xs text-gray-400">{activity.time}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-white font-medium truncate">{activity.action}</p>
+                    <p className="text-xs text-gray-400">{activity.time}</p>
                   </div>
                   <div className={`
-                    w-2 h-2 rounded-full
+                    w-2 h-2 rounded-full flex-shrink-0 ml-2
                     ${activity.type === 'habit' ? 'bg-green-500' : 
                       activity.type === 'goal' ? 'bg-blue-500' : 'bg-yellow-500'}
                   `} />
