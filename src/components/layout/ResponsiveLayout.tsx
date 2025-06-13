@@ -20,10 +20,10 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
 
   if (isMobile) {
     return (
-      <div className="min-h-screen flex flex-col bg-gray-950 relative">
+      <div className="min-h-screen flex flex-col bg-white relative">
         <MobileNavbar />
         <main className="flex-1 pb-20 overflow-x-hidden">
-          <div className="safe-area-top px-4 py-6">
+          <div className="safe-area-top">
             {children}
           </div>
         </main>

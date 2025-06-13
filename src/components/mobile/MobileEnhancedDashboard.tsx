@@ -63,13 +63,13 @@ export function MobileEnhancedDashboard() {
 
   return (
     <MobilePullToRefresh onRefresh={handleRefresh} className="min-h-screen bg-white">
-      <div className="safe-area-top space-y-6">
-        {/* Welcome Section */}
-        <div className="px-4 pt-4">
+      <div className="safe-area-top space-y-6 pb-24">
+        {/* Welcome Section - Better spacing */}
+        <div className="px-4 pt-2">
           <h1 className="neo-text-big text-black mb-1">
             GOOD MORNING! 👋
           </h1>
-          <p className="text-sm text-black/70">
+          <p className="text-sm text-black/70 mb-4">
             Let's make today count
           </p>
         </div>
@@ -79,13 +79,13 @@ export function MobileEnhancedDashboard() {
           <MobileStatsGrid />
         </div>
 
-        {/* Quick Actions */}
-        <div className="px-4">
+        {/* Quick Actions - Better spacing */}
+        <div className="px-4 mt-6">
           <MobileOptimizedCard className="border-4 border-black" animated={false}>
             <MobileCardHeader>
               <h2 className="neo-text-medium text-black">QUICK ACTIONS</h2>
             </MobileCardHeader>
-            <MobileCardContent className="grid grid-cols-2 gap-3">
+            <MobileCardContent className="grid grid-cols-2 gap-3 p-4">
               {quickActions.map((action, index) => {
                 const IconComponent = action.icon;
                 return (
@@ -109,18 +109,18 @@ export function MobileEnhancedDashboard() {
           </MobileOptimizedCard>
         </div>
 
-        {/* Today's Habits */}
-        <div className="px-4">
+        {/* Today's Habits - Better spacing */}
+        <div className="px-4 mt-6">
           <MobileHabitTracker />
         </div>
 
-        {/* Recent Activity */}
-        <div className="px-4 pb-4">
+        {/* Recent Activity - Better spacing */}
+        <div className="px-4 pb-4 mt-6">
           <MobileOptimizedCard className="border-4 border-black">
             <MobileCardHeader>
               <h2 className="neo-text-medium text-black">RECENT ACTIVITY</h2>
             </MobileCardHeader>
-            <MobileCardContent>
+            <MobileCardContent className="p-4">
               <div className="space-y-3">
                 {[
                   { action: 'Completed Morning Meditation', time: '2 hours ago', type: 'habit' },
