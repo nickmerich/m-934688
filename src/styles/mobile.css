@@ -8,13 +8,13 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Safe area handling for iOS devices */
+  /* Enhanced safe area handling for iOS devices */
   .safe-area-top {
-    padding-top: max(env(safe-area-inset-top), 16px);
+    padding-top: max(env(safe-area-inset-top), 20px);
   }
 
   .safe-area-bottom {
-    padding-bottom: max(env(safe-area-inset-bottom), 16px);
+    padding-bottom: max(env(safe-area-inset-bottom), 20px);
   }
 
   .safe-area-left {
@@ -59,46 +59,46 @@
     @apply text-xl leading-8;
   }
 
-  /* Enhanced mobile spacing utilities */
+  /* Enhanced mobile spacing utilities - Improved spacing */
   .mobile-spacing-xs {
-    @apply p-3 space-y-2;
-  }
-
-  .mobile-spacing-sm {
     @apply p-4 space-y-3;
   }
 
+  .mobile-spacing-sm {
+    @apply p-5 space-y-4;
+  }
+
   .mobile-spacing-md {
-    @apply p-6 space-y-4;
+    @apply p-6 space-y-5;
   }
 
   .mobile-spacing-lg {
     @apply p-8 space-y-6;
   }
 
-  /* Enhanced mobile card optimizations - Fixed overlapping issues */
+  /* Enhanced mobile card optimizations - Fixed overlapping issues with better spacing */
   .mobile-card {
     @apply rounded-lg border-4 border-black bg-white;
     @apply shadow-lg transition-all duration-200;
     @apply min-h-[48px] touch-manipulation;
-    /* Prevent content overflow and overlapping */
+    /* Prevent content overflow and overlapping with improved spacing */
     overflow: hidden;
     position: relative;
     z-index: 1;
-    /* Ensure proper spacing */
-    margin-bottom: 8px;
+    /* Increased spacing to prevent overlapping */
+    margin-bottom: 16px;
   }
 
   .mobile-card-compact {
-    @apply mobile-card p-3 space-y-2;
-    /* Fixed spacing to prevent overlapping */
-    margin-bottom: 8px;
+    @apply mobile-card p-4 space-y-3;
+    /* Improved spacing to prevent overlapping */
+    margin-bottom: 16px;
   }
 
   .mobile-card-comfortable {
-    @apply mobile-card p-4 space-y-3;
-    /* Fixed spacing to prevent overlapping */
-    margin-bottom: 12px;
+    @apply mobile-card p-5 space-y-4;
+    /* Improved spacing to prevent overlapping */
+    margin-bottom: 20px;
   }
 
   /* Enhanced mobile button optimizations */
@@ -164,9 +164,9 @@
     scroll-snap-align: start;
   }
 
-  /* Enhanced mobile grid optimizations - Fixed overlapping */
+  /* Enhanced mobile grid optimizations - Fixed overlapping with better spacing */
   .mobile-grid {
-    @apply grid gap-4;
+    @apply grid gap-5;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     /* Prevent grid overflow and overlapping */
     width: 100%;
@@ -298,13 +298,13 @@
     contain: strict;
   }
 
-  /* Mobile stat card specific styles - Fixed overlapping */
+  /* Mobile stat card specific styles - Fixed overlapping with improved spacing */
   .mobile-stat-card {
     @apply mobile-card;
-    /* Fixed height and spacing to prevent overlapping */
-    min-height: 140px;
-    max-height: 180px;
-    margin-bottom: 12px;
+    /* Improved height and spacing to prevent overlapping */
+    min-height: 150px;
+    max-height: 200px;
+    margin-bottom: 16px;
   }
 
   .mobile-stat-value {
@@ -322,20 +322,33 @@
     flex-shrink: 0;
   }
 
-  /* Header spacing fixes */
+  /* Header spacing fixes - Improved spacing to prevent overlapping */
   .mobile-header-spacing {
-    @apply mb-4 pb-2;
+    @apply mb-6 pb-4;
     /* Ensure headers don't overlap with content */
     z-index: 10;
     position: relative;
   }
 
-  /* Content spacing fixes */
+  /* Content spacing fixes - Improved spacing */
   .mobile-content-spacing {
-    @apply mt-4 pt-2;
+    @apply mt-6 pt-4;
     /* Ensure content doesn't overlap with headers */
     z-index: 5;
     position: relative;
+  }
+
+  /* Tab navigation specific fixes */
+  .mobile-tab-content {
+    @apply mt-8 pt-4;
+    /* Extra spacing for tab content to prevent overlap */
+    min-height: 60vh;
+  }
+
+  /* Bottom navigation spacing */
+  .mobile-bottom-nav-spacing {
+    @apply pb-28;
+    /* Ensure content doesn't overlap with bottom navigation */
   }
 }
 
@@ -352,7 +365,7 @@
   /* Optimize text for mobile reading */
   body {
     font-size: 16px; /* Prevent zoom on iOS */
-    line-height: 1.5;
+    line-height: 1.6;
     /* Prevent horizontal scroll */
     overflow-x: hidden;
   }
@@ -365,8 +378,8 @@
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Add margin to prevent overlapping */
-    margin-bottom: 4px;
+    /* Increased margin to prevent overlapping */
+    margin-bottom: 8px;
   }
 
   /* Optimize form inputs */
@@ -375,7 +388,7 @@
     font-size: 16px; /* Prevent zoom on iOS */
     /* Prevent input overflow */
     max-width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   /* Optimize navigation */
@@ -386,48 +399,54 @@
     text-overflow: ellipsis;
   }
 
-  /* Enhanced grid spacing on mobile - Fixed overlapping */
+  /* Enhanced grid spacing on mobile - Fixed overlapping with better spacing */
   .grid {
-    /* Ensure proper spacing between grid items */
-    gap: 1rem;
+    /* Increased spacing between grid items */
+    gap: 1.25rem;
   }
 
-  /* Enhanced card spacing on mobile - Fixed overlapping */
+  /* Enhanced card spacing on mobile - Fixed overlapping with better spacing */
   .neo-card, .mobile-card {
     /* Prevent card overflow and overlapping */
     max-width: 100%;
     overflow: hidden;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
-  /* Tab navigation spacing */
+  /* Tab navigation spacing - Improved */
   .tabs-list {
-    /* Prevent tab overlapping */
-    gap: 0.5rem;
-    padding: 0.5rem;
+    /* Prevent tab overlapping with better spacing */
+    gap: 0.75rem;
+    padding: 0.75rem;
   }
 
-  /* Stats grid specific spacing */
+  /* Stats grid specific spacing - Improved */
   .stats-grid {
     /* Better spacing for stats on mobile */
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  /* Header logo spacing */
+  .mobile-logo-header {
+    @apply mb-8 pb-4;
+    /* Extra spacing for logo header */
   }
 }
 
 /* Enhanced landscape orientation optimizations */
 @media (max-width: 767px) and (orientation: landscape) {
   .mobile-landscape-compact {
-    @apply py-2;
+    @apply py-3;
   }
 
   .mobile-landscape-nav {
-    @apply h-12;
+    @apply h-14;
   }
 
-  /* Reduce safe area padding in landscape */
+  /* Adjust safe area padding in landscape */
   .safe-area-top {
-    padding-top: max(env(safe-area-inset-top), 12px);
+    padding-top: max(env(safe-area-inset-top), 16px);
   }
 }
 

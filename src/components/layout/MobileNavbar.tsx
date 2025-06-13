@@ -44,7 +44,12 @@ const MobileNavbar = () => {
       {/* Mobile Header */}
       <div className="bg-white border-b-4 border-black">
         <div className="flex items-center justify-between px-4 py-4">
-          <div className="neo-card-green inline-block">
+          <div className="flex items-center space-x-2">
+            <img 
+              src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" 
+              alt="The Gryt Bear Logo" 
+              className="h-8 w-8 object-contain" 
+            />
             <span className="neo-text-medium text-black">THE GRYT</span>
           </div>
           
@@ -56,9 +61,14 @@ const MobileNavbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-80 bg-white border-l-4 border-black p-0">
               <div className="flex flex-col h-full">
-                {/* Header */}
+                {/* Header with Bear Logo */}
                 <div className="px-6 py-6 border-b-4 border-black">
-                  <div className="neo-card-green inline-block">
+                  <div className="flex items-center space-x-3">
+                    <img 
+                      src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" 
+                      alt="The Gryt Bear Logo" 
+                      className="h-10 w-10 object-contain" 
+                    />
                     <span className="neo-text-medium text-black">THE GRYT</span>
                   </div>
                 </div>

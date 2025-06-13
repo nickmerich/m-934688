@@ -22,8 +22,8 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
     return (
       <div className="min-h-screen flex flex-col bg-white relative">
         <MobileNavbar />
-        <main className="flex-1 pb-20 overflow-x-hidden">
-          <div className="safe-area-top">
+        <main className="flex-1 pb-24 overflow-x-hidden">
+          <div className="safe-area-top pt-4">
             {children}
           </div>
         </main>

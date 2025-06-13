@@ -27,26 +27,25 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-white no-gradients">
       <div className="container mx-auto px-4 py-4 lg:px-6 lg:py-8 safe-area-top">
-        {/* Mobile Header - Fixed positioning to prevent overlap */}
-        <div className={`${isMobile ? 'mb-4' : 'mb-6 lg:mb-8'} text-center`}>
-          <h1 className={`${isMobile ? 'neo-text-big' : 'neo-text-massive'} text-black mb-2`}>
-            GRYT
-            <span className="block" style={{
-              color: 'hsl(var(--neon-green))'
-            }}>
-              DASHBOARD
-            </span>
-          </h1>
-          <p className={`${isMobile ? 'neo-text-medium' : 'neo-text-big'} text-black`}>
-            BUILD YOURSELF. DO THE THING.
-          </p>
+        {/* Mobile Header with Bear Logo - Fixed positioning and spacing */}
+        <div className={`${isMobile ? 'mb-6 mt-4' : 'mb-6 lg:mb-8'} text-center`}>
+          <div className="flex flex-col items-center space-y-3">
+            <img 
+              src="/lovable-uploads/c3193544-bf00-4f06-a79a-b09dee14a047.png" 
+              alt="The Gryt Bear Logo" 
+              className={`${isMobile ? 'h-16 w-16' : 'h-20 w-20'} object-contain`} 
+            />
+            <p className={`${isMobile ? 'neo-text-medium' : 'neo-text-big'} text-black`}>
+              BUILD YOURSELF. DO THE THING.
+            </p>
+          </div>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className={`space-y-4 ${isMobile ? 'lg:space-y-4' : 'lg:space-y-6'}`}>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className={`space-y-6 ${isMobile ? 'lg:space-y-6' : 'lg:space-y-6'}`}>
           <TabsList className={`grid w-full ${isMobile ? 'grid-cols-4' : 'grid-cols-4 lg:grid-cols-7'} bg-white border-4 border-black neo-shadow-harsh p-2 gap-2`}>
             <TabsTrigger 
               value="overview" 
-              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-2 text-xs' : 'px-3 py-2'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
+              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-3 text-xs' : 'px-3 py-3'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
               style={{
                 background: activeTab === 'overview' ? 'hsl(var(--neon-green))' : 'white',
                 boxShadow: '2px 2px 0px #000000'
@@ -57,7 +56,7 @@ const Dashboard = () => {
             </TabsTrigger>
             <TabsTrigger 
               value="ai-insights" 
-              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-2 text-xs' : 'px-3 py-2'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
+              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-3 text-xs' : 'px-3 py-3'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
               style={{
                 background: activeTab === 'ai-insights' ? 'hsl(var(--neon-green))' : 'white',
                 boxShadow: '2px 2px 0px #000000'
@@ -68,7 +67,7 @@ const Dashboard = () => {
             </TabsTrigger>
             <TabsTrigger 
               value="goal-architect" 
-              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-2 text-xs' : 'px-3 py-2'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
+              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-3 text-xs' : 'px-3 py-3'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
               style={{
                 background: activeTab === 'goal-architect' ? 'hsl(var(--neon-green))' : 'white',
                 boxShadow: '2px 2px 0px #000000'
@@ -79,7 +78,7 @@ const Dashboard = () => {
             </TabsTrigger>
             <TabsTrigger 
               value="mindgym" 
-              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-2 text-xs' : 'px-3 py-2'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
+              className={`bg-white text-black border-2 border-black font-bold uppercase ${isMobile ? 'px-2 py-3 text-xs' : 'px-3 py-3'} transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-1 ${isMobile ? 'gap-1' : 'gap-2'}`}
               style={{
                 background: activeTab === 'mindgym' ? 'hsl(var(--neon-green))' : 'white',
                 boxShadow: '2px 2px 0px #000000'
@@ -92,7 +91,7 @@ const Dashboard = () => {
               <>
                 <TabsTrigger 
                   value="habits" 
-                  className="bg-white text-black border-2 border-black font-bold uppercase px-3 py-2 transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-2"
+                  className="bg-white text-black border-2 border-black font-bold uppercase px-3 py-3 transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-2"
                   style={{
                     background: activeTab === 'habits' ? 'hsl(var(--neon-green))' : 'white',
                     boxShadow: '2px 2px 0px #000000'
@@ -103,7 +102,7 @@ const Dashboard = () => {
                 </TabsTrigger>
                 <TabsTrigger 
                   value="goals" 
-                  className="bg-white text-black border-2 border-black font-bold uppercase px-3 py-2 transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-2"
+                  className="bg-white text-black border-2 border-black font-bold uppercase px-3 py-3 transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-2"
                   style={{
                     background: activeTab === 'goals' ? 'hsl(var(--neon-green))' : 'white',
                     boxShadow: '2px 2px 0px #000000'
@@ -114,7 +113,7 @@ const Dashboard = () => {
                 </TabsTrigger>
                 <TabsTrigger 
                   value="settings" 
-                  className="bg-white text-black border-2 border-black font-bold uppercase px-3 py-2 transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-2"
+                  className="bg-white text-black border-2 border-black font-bold uppercase px-3 py-3 transition-all data-[state=active]:bg-green-500 data-[state=active]:text-black hover:transform hover:translate-x-1 hover:translate-y-1 flex items-center gap-2"
                   style={{
                     background: activeTab === 'settings' ? 'hsl(var(--neon-green))' : 'white',
                     boxShadow: '2px 2px 0px #000000'
@@ -127,8 +126,9 @@ const Dashboard = () => {
             )}
           </TabsList>
 
-          <div className="px-0">
-            <TabsContent value="overview" className={`space-y-4 ${isMobile ? 'space-y-4' : 'space-y-6'} mt-4`}>
+          {/* Tab Content - Improved spacing to prevent overlap */}
+          <div className={`px-0 ${isMobile ? 'mt-8' : 'mt-6'}`}>
+            <TabsContent value="overview" className={`space-y-6 ${isMobile ? 'space-y-6' : 'space-y-6'} mt-6`}>
               {/* Stats Overview */}
               {isMobile ? <MobileStatsOverview /> : <StatsOverview />}
               
@@ -140,29 +140,29 @@ const Dashboard = () => {
               )}
             </TabsContent>
 
-            <TabsContent value="ai-insights" className="mt-4">
+            <TabsContent value="ai-insights" className="mt-6">
               <AIInsightsDashboard />
             </TabsContent>
 
-            <TabsContent value="goal-architect" className="mt-4">
+            <TabsContent value="goal-architect" className="mt-6">
               <AIGoalArchitect />
             </TabsContent>
 
-            <TabsContent value="mindgym" className="mt-4">
+            <TabsContent value="mindgym" className="mt-6">
               <MindGymCoach />
             </TabsContent>
 
             {!isMobile && (
               <>
-                <TabsContent value="habits" className="mt-4">
+                <TabsContent value="habits" className="mt-6">
                   <HabitTracker />
                 </TabsContent>
 
-                <TabsContent value="goals" className="mt-4">
+                <TabsContent value="goals" className="mt-6">
                   <GoalProgress />
                 </TabsContent>
 
-                <TabsContent value="settings" className="mt-4">
+                <TabsContent value="settings" className="mt-6">
                   <UserPreferencesSetup />
                 </TabsContent>
               </>
